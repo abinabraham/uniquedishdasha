@@ -1,4 +1,3 @@
-{% load form_tags %}
 {% load static %}<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    <style>
-        label.error{
-            color:red !important;
-        }
-    </style>
 </head>
 <body>
-    {% get_fbtype as fbtype %}
-    {% get_tailoringstyle as tailstyle %}
-    {% include "common/header.html" %}
 
+    <header class="text-center">
+        <div class="cotnainer">
+            <h2>Header</h2>
+        </div>
+    </header>
 
     <div class="container">
         <div class="orderFlowWrap">
@@ -33,14 +29,14 @@
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link btn_next_step1" id="order-tab" data-bs-toggle="tab"
+                                <button class="nav-link" id="order-tab" data-bs-toggle="tab"
                                     data-bs-target="#orderSection" type="button" role="tab" aria-controls="profile"
                                     aria-selected="false">
                                     Order Details
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link btn_next_step2" id="measurement-tab" data-bs-toggle="tab"
+                                <button class="nav-link" id="measurement-tab" data-bs-toggle="tab"
                                     data-bs-target="#measurementSection" type="button" role="tab"
                                     aria-controls="contact" aria-selected="false">
                                     Measurement
@@ -58,51 +54,12 @@
                 </div>
         
                 <div class="tab-content" id="myTabContent">
-                    {% if not customer %}
                     <div class="tab-pane fade show active" id="customerSection" role="tabpanel" aria-labelledby="">
                         <div class="masterSearchWrap">
-                            
-                                {% if customer %}
-                                <div class="formPlate mb-4">
-                                    <div class="titleWrap">
-                                        <h3>
-                                            Customer Details
-                                        </h3>
-                                    </div>
-                                    <div class="dataRow">
-                                        <div class="row">
-                                            <div class="col-2">
-                                                <span>
-                                                    {{ customer.id }}
-                                                </span>
-                                            </div>
-                                            <div class="col-3">
-                                                <span>
-                                                    {{ customer.first_name }} {{ customer.last_name }}
-                                                </span>
-                                            </div>
-                                            <div class="col-3">
-                                                <span>
-                                                    {{ country.code }} - {{ customer.phone_number }}
-                                                </span>
-                                            </div>
-                                            <div class="col-4">
-                                                <span>
-                                                     {{ country.email }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% else %}
-                                <h2>Search Existing Customer</h2>
-                                <form action="{% url 'orders:order_submission' %}"
-                                    class="user_input_form" method="post">{% csrf_token %}                            
-                                        <input id="inputOrigin" class="form-control form-control-lg" type="text" 
-                                            placeholder="Search - Customer, Order"
-                                            name="user_input" aria-label=".form-control-lg example">
-                                </form>
-                            
+                            <h2>Search Existing Customer</h2>
+                            <form action="">
+                                <input class="form-control form-control-lg" type="text" placeholder="Search - Customer, Order" aria-label=".form-control-lg example">
+
                                 <div class="resultsWrapper">
                                     <div class="resultsLabels">
                                         <div class="resultLabel idLabel">
@@ -185,10 +142,10 @@
                                     </div>
 
                                 </div>
-                            {% endif %}
+                            </form>
                             <h3 class="mt-4">OR</h3>
                         </div>
-                         
+                        
                         <div class="formPlate ">
                             <div class="titleWrap">
                                 <h3>
@@ -196,55 +153,72 @@
                                 </h3>
                             </div>
                             <div class="formWrap">
-                                <form action="" class="form_primary_step1" method="post"
-                                        id="id_form_primary_step1">{% csrf_token %}
+                                <form action="">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">First Name</label>
-                                                <input name="first_name" type="text" class="form-control" id="fname" placeholder="">
+                                                <input type="text" class="form-control" id="" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">Last Name</label>
-                                                <input name="last_name" type="text" class="form-control" id="lname" placeholder="">
+                                                <input type="text" class="form-control" id="" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">Email ID</label>
-                                                <input name="email" type="email" class="form-control" id="email" placeholder="">
+                                                <input type="email" class="form-control" id="" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">Contact Number</label>
-                                                <input name="phone_number" type="number" class="form-control phone" id="phone" placeholder="">
+                                                <input id="phone" type="number" class="form-control" id="" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">Place</label>
-                                                <input name="place" type="text" class="form-control" id="place" placeholder="">
+                                                <select name="" id="placeList" class="form-select">
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">Area</label>
-                                                <input name="area" type="text" class="form-control" id="area" placeholder="">
+                                                <select name="" id="areaList" class="form-select">
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">Address</label>
-                                                <textarea name="address" id="" cols="30" rows="5"></textarea>
+                                                <textarea name="" id="" cols="30" rows="5"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">Notes</label>
-                                                <textarea name="notes" id="" cols="30" rows="5"></textarea>
+                                                <textarea name="" id="" cols="30" rows="5"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -252,20 +226,18 @@
                             </div>
                         </div>
                         
-                        <div class="actionPlate step1">
+                        <div class="actionPlate">
                             <div class="row">
                                 <div class="col-6">
-                                    <button class="secondary step1-cancel" type="button">Cancel</button>
+                                    <button class="secondary">Cancel</button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="primary step1-next" type="button">Next</button>
+                                    <button class="primary">Next</button>
                                 </div>
                             </div>
                         </div>
-                        
 
                     </div>
-                    {% endif %}
                     <div class="tab-pane fade" id="orderSection" role="tabpanel" aria-labelledby="">
                         <div class="formPlate mb-4">
                             <div class="titleWrap">
@@ -273,66 +245,39 @@
                                     Customer Details
                                 </h3>
                             </div>
-                            {% if customer %}
                             <div class="dataRow">
                                 <div class="row">
                                     <div class="col-2">
                                         <span>
-                                            DD {{ customer.id }}
+                                            DD 123
                                         </span>
                                     </div>
                                     <div class="col-3">
                                         <span>
-                                            {{ customer.first_name }} {{ customer.last_name }}
+                                            Name Surname
                                         </span>
                                     </div>
                                     <div class="col-3">
                                         <span>
-                                            {{ country.code }} - {{ customer.phone_number }}
+                                            +971 9876543210
                                         </span>
                                     </div>
                                     <div class="col-4">
                                         <span>
-                                                {{ country.email }}
+                                            emailid@domain.com 
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            {% else %}
-                            <div class="dataRow step2-tab">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <span class="user_id_spn">
-                                        </span>
-                                    </div>
-                                    <div class="col-3">
-                                        <span  class="user_name_spn">
-                                        </span>
-                                    </div>
-                                    <div class="col-3">
-                                        <span class="user_phone_spn">
-                                        </span>
-                                    </div>
-                                    <div class="col-4">
-                                        <span class="user_email_spn">
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endif %}
                         </div>
-                        
                         <div class="formPlate">
                             <div class="titleWrap">
                                 <h3>
-                                    Add Order Details
+                                    Add New Customer
                                 </h3>
                             </div>
                             <div class="formWrap">
-                                <form action="" class="form_primary_step2" method="post"
-                                        id="id_form_primary_step2">{% csrf_token %}
-                                    <input name="session_customer" type="hidden" class="form-control" id="id_session_customer">
-                                    
+                                <form action="">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="inputWrap">
@@ -357,51 +302,83 @@
                                         <div class="col-md-6"></div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
-                                                <label for="" class="form-label">Fabric Type *</label>
-                                                <select name="fabricType" id="fabricType" class="form-select">
-                                                    <option value="">Select fabric type</option>
-                                                    {% for item in fbtype %}
-                                                    <option value="{{ item.id }}">{{ item.title }}</option>
-                                                    {% endfor %}
+                                                <label for="" class="form-label">Fabric Type</label>
+                                                <select name="" id="fabricType" class="form-select">
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
-                                                <label for="" class="form-label">Tayloring Style *</label>
-                                                <select name="tayloringType" id="tayloringType" class="form-select">
-                                                    <option value="">Select Style</option>
-                                                    {% for item in tailstyle %}
-                                                    <option value="{{ item.pk }}">{{ item.title }}</option>
-                                                    {% endfor %}
+                                                <label for="" class="form-label">Tayloring Style</label>
+                                                <select name="" id="tayloringType" class="form-select">
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
-                                                <label for="" class="form-label">Color *</label>
-                                                <input name="color" type="text" class="form-control" id="color" placeholder="Color">
-
+                                                <label for="" class="form-label">Color</label>
+                                                <select name="" id="colorType" class="form-select">
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
-                                                <label for="" class="form-label">Total meters *</label>
-                                                <input name="meters" type="number" class="form-control" id="meters" placeholder="Total meters">
-
+                                                <label for="" class="form-label">Total meters</label>
+                                                <select name="" id="totalMeters" class="form-select">
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
-                                                <label for="" class="form-label">Quantity *</label>
-                                                <input name="qty" type="number" class="form-control" id="qty" placeholder="Quantity">
-
+                                                <label for="" class="form-label">Quantity</label>
+                                                <select name="" id="totalQuantity" class="form-select">
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                    <option value="">Sample</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="inputWrap">
-                                                <label for="" class="form-label">Delivery Date *</label>
-                                                <input name="ddate" type="date" class="form-control" id="" placeholder="">
+                                                <label for="" class="form-label">Delivery Date</label>
+                                                <input type="date" class="form-control" id="" placeholder="">
                                             </div>
                                         </div>
                                         
@@ -415,14 +392,13 @@
                         <div class="actionPlate step2">
                             <div class="row">
                                 <div class="col-6">
-                                    <button class="secondary step2-cancel">Back</button>
+                                    <button class="secondary">Back</button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="primary step2-next">Next</button>
+                                    <button class="primary">Next</button>
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                     <div class="tab-pane fade" id="measurementSection" role="tabpanel" aria-labelledby="">
                         <div class="formPlate mb-4">
@@ -434,22 +410,23 @@
                             <div class="dataRow">
                                 <div class="row">
                                     <div class="col-12">
-                                        <span>Customer ID: <span  class="user_id_spn"><b></b></span></span>
+                                        <span>Customer Unique ID: <b>[Print ID here]</b></span>
                                     </div>
                                     <div class="col-12">
-                                        <span>Order ID: <span  class="order_id_spn"><b></b></span></span>
+                                        <span><b>UNIQUE DISHDASHA</b></span>
                                     </div>
                                     <div class="col-12">
-                                        <span>Store Location: <span  class="branch_id_spn"><b></b></span></span>
+                                        <span>Store Location: <b>[Print Location here]</b></span>
                                     </div>
                                     <div class="container">
                                         <hr>
                                     </div>
                                     <div class="col-4">
-                                        <span>Order date: <span  class="order_dt_spn"><b></b></span></span>
+                                        <span>Order date: <b>[DD/MM/YYYY]</b></span> <br>
+                                        <span>Receipt date: <b>[DD/MM/YYYY]</b></span>
                                     </div>
                                     <div class="col-4 text-center">
-                                        <span>Q.of pieces: <br> <span  class="quantity_dt_spn"><b></b></span></span> <br>
+                                        <span>Q.of pieces: <br> <b>4</b></span> <br>
                                     </div>
                                     <div class="col-4 ">
                                         <span>Name: <b>Name Surname</b></span> <br>
@@ -463,7 +440,7 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="collorWrap">
-                                                    <img src="/static/images/measurements/img2.png" alt="">
+                                                    <img src="images/measurements/img2.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="collar" id="collar1"  checked="">
                                                         <input class="form-check-input" type="radio" name="collar" id="collar2">
@@ -475,7 +452,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="zipWrap">
-                                                    <img src="/static/images/measurements/img5.png" alt="">
+                                                    <img src="images/measurements/img5.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="zip" id="zip1"  checked="">
                                                         <input class="form-check-input" type="radio" name="zip" id="zip2">
@@ -488,7 +465,7 @@
                                             <div class="col-sm-6">
                                                 <div class="zipWrap">
                                                     <div class="mb-1"></div>
-                                                    <img src="/static/images/measurements/img6.png" alt="">
+                                                    <img src="images/measurements/img6.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="pocket" id="pocket1"  checked="">
                                                         <input class="form-check-input" type="radio" name="pocket" id="pocket2">
@@ -502,7 +479,7 @@
                                             <div class="col-sm-6">
                                                 <div class="pocketTwo">
                                                     <div class="mb-1"></div>
-                                                    <img src="/static/images/measurements/img8.png" alt="">
+                                                    <img src="images/measurements/img8.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo1"  checked="">
                                                         <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo2">
@@ -517,7 +494,7 @@
 
                                             <div class="col-sm-6">
                                                 <div class="tieWrap">
-                                                    <img src="/static/images/measurements/img7.png" alt="">
+                                                    <img src="images/measurements/img7.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="tie" id="tie1"  checked="">
                                                         <input class="form-check-input" type="radio" name="tie" id="tie2">
@@ -533,7 +510,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="penPocket">
-                                                    <img src="/static/images/measurements/penPocket.png" alt="">
+                                                    <img src="images/measurements/penPocket.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="penpocket" id="penpocket1"  checked="">
                                                         <input class="form-check-input" type="radio" name="penpocket" id="penpocket2">
@@ -605,7 +582,7 @@
                                                             <option value="">2.00</option>
                                                         </select>
                                                     </div>
-                                                    <img src="/static/images/measurements/1.png" alt="">
+                                                    <img src="images/measurements/1.png" alt="">
                                                 </div>
                                             </div>
 
@@ -613,7 +590,7 @@
                                                 <div class="mb-3"></div>
                                         
                                                 <div class="cuffLink">
-                                                    <img src="/static/images/measurements/cuffLink1.png" alt="">
+                                                    <img src="images/measurements/cuffLink1.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="cufflink" id="cufflink1"  checked="">
                                                         <input class="form-check-input" type="radio" name="cufflink" id="cufflink2">
@@ -624,7 +601,7 @@
                                                 <div class="mb-3"></div>
 
                                                 <div class="cuffLink">
-                                                    <img src="/static/images/measurements/cuffLink2.png" alt="">
+                                                    <img src="images/measurements/cuffLink2.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="cufflink" id="cufflink5"  checked="">
                                                         <input class="form-check-input" type="radio" name="cufflink" id="cufflink6">
@@ -636,7 +613,7 @@
 
 
                                                 <div class="insidePocketShape">
-                                                    <img src="/static/images/measurements/insidePocketShape.png" alt=""> <br>
+                                                    <img src="images/measurements/insidePocketShape.png" alt=""> <br>
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape1"  checked="">
                                                         <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape2">
@@ -644,7 +621,7 @@
                                                 </div>
                                                 <div class="mb-3"></div>
                                                 <div class="buttons">
-                                                    <img src="/static/images/measurements/buttons.png" alt="">
+                                                    <img src="images/measurements/buttons.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="buttons" id="buttons1"  checked="">
                                                         <input class="form-check-input" type="radio" name="buttons" id="buttons2">
@@ -655,7 +632,7 @@
                                                 </div>
                                                 <div class="mb-3"></div>
                                                 <div class="finalStyle">
-                                                    <img src="/static/images/measurements/finalStyle.png" alt="">
+                                                    <img src="images/measurements/finalStyle.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle1"  checked="">
                                                         <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle2">
@@ -802,7 +779,7 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="collorWrap">
-                                                    <img src="/static/images/measurements/img2.png" alt="">
+                                                    <img src="images/measurements/img2.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="collar" id="collar1"  checked="">
                                                         <input class="form-check-input" type="radio" name="collar" id="collar2">
@@ -814,7 +791,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="zipWrap">
-                                                    <img src="/static/images/measurements/img5.png" alt="">
+                                                    <img src="images/measurements/img5.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="zip" id="zip1"  checked="">
                                                         <input class="form-check-input" type="radio" name="zip" id="zip2">
@@ -827,7 +804,7 @@
                                             <div class="col-sm-6">
                                                 <div class="zipWrap">
                                                     <div class="mb-1"></div>
-                                                    <img src="/static/images/measurements/img6.png" alt="">
+                                                    <img src="images/measurements/img6.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="pocket" id="pocket1"  checked="">
                                                         <input class="form-check-input" type="radio" name="pocket" id="pocket2">
@@ -841,7 +818,7 @@
                                             <div class="col-sm-6">
                                                 <div class="pocketTwo">
                                                     <div class="mb-1"></div>
-                                                    <img src="/static/images/measurements/img8.png" alt="">
+                                                    <img src="images/measurements/img8.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo1"  checked="">
                                                         <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo2">
@@ -856,7 +833,7 @@
 
                                             <div class="col-sm-6">
                                                 <div class="tieWrap">
-                                                    <img src="/static/images/measurements/img7.png" alt="">
+                                                    <img src="images/measurements/img7.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="tie" id="tie1"  checked="">
                                                         <input class="form-check-input" type="radio" name="tie" id="tie2">
@@ -872,7 +849,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="penPocket">
-                                                    <img src="/static/images/measurements/penPocket.png" alt="">
+                                                    <img src="images/measurements/penPocket.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="penpocket" id="penpocket1"  checked="">
                                                         <input class="form-check-input" type="radio" name="penpocket" id="penpocket2">
@@ -944,7 +921,7 @@
                                                             <option value="">2.00</option>
                                                         </select>
                                                     </div>
-                                                    <img src="/static/images/measurements/1.png" alt="">
+                                                    <img src="images/measurements/1.png" alt="">
                                                 </div>
                                             </div>
 
@@ -952,7 +929,7 @@
                                                 <div class="mb-3"></div>
                                         
                                                 <div class="cuffLink">
-                                                    <img src="/static/images/measurements/cuffLink1.png" alt="">
+                                                    <img src="images/measurements/cuffLink1.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="cufflink" id="cufflink1"  checked="">
                                                         <input class="form-check-input" type="radio" name="cufflink" id="cufflink2">
@@ -963,7 +940,7 @@
                                                 <div class="mb-3"></div>
 
                                                 <div class="cuffLink">
-                                                    <img src="/static/images/measurements/cuffLink2.png" alt="">
+                                                    <img src="images/measurements/cuffLink2.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="cufflink" id="cufflink5"  checked="">
                                                         <input class="form-check-input" type="radio" name="cufflink" id="cufflink6">
@@ -975,7 +952,7 @@
 
 
                                                 <div class="insidePocketShape">
-                                                    <img src="/static/images/measurements/insidePocketShape.png" alt=""> <br>
+                                                    <img src="images/measurements/insidePocketShape.png" alt=""> <br>
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape1"  checked="">
                                                         <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape2">
@@ -983,7 +960,7 @@
                                                 </div>
                                                 <div class="mb-3"></div>
                                                 <div class="buttons">
-                                                    <img src="/static/images/measurements/buttons.png" alt="">
+                                                    <img src="images/measurements/buttons.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="buttons" id="buttons1"  checked="">
                                                         <input class="form-check-input" type="radio" name="buttons" id="buttons2">
@@ -994,7 +971,7 @@
                                                 </div>
                                                 <div class="mb-3"></div>
                                                 <div class="finalStyle">
-                                                    <img src="/static/images/measurements/finalStyle.png" alt="">
+                                                    <img src="images/measurements/finalStyle.png" alt="">
                                                     <div class="inputGroup">
                                                         <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle1"  checked="">
                                                         <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle2">
@@ -1099,13 +1076,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="actionPlate step3">
+                        <div class="actionPlate step2">
                             <div class="row">
                                 <div class="col-6">
-                                    <button class="secondary step3">Back</button>
+                                    <button class="secondary">Back</button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="primary step3">Next</button>
+                                    <button class="primary">Next</button>
                                 </div>
                             </div>
                         </div>
@@ -1260,12 +1237,10 @@
             </div>
         </div>
     </div>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    
     <script type="module"  src="/static/js/all.js"></script>
     <script  type="module">
         $(jQuery).ready(function() {
-
-
             $('#placeList').select2();
             $('#areaList').select2();
             $('#fabricType').select2();
@@ -1292,7 +1267,7 @@
 
 
 
-            const input = document.querySelector(".phone");
+            const input = document.querySelector("#phone");
             window.intlTelInput(input, {
                         nationalMode: false,
                         autoHideDialCode: false,
@@ -1308,195 +1283,6 @@
         $(document).on('select2:open', () => {
             document.querySelector('.select2-search__field').focus();
         });
-
-        //custom
-        $(document).ready(function(){
-            {% if customer %}
-                activaTab('orderSection');
-            {% endif %}
-
-
-            $(function() {
-            $("#inputOrigin").autocomplete({
-            source: "/origin_airport_search/",
-            select: function (event, ui) { //item selected
-                AutoCompleteSelectHandler(event, ui)
-            },
-            minLength: 2,
-
-            })
-            .autocomplete( "instance" )._renderItem = function( ul, item ) {
-                console.log(item)
-                 return $( "<li>" )
-
-                .append( "<div class='resultData idData'><span><i class='fas fa-id-badge'></i> " + item.id + "</span></div><div class='resultData nameData'><span><i class='fas fa-user'></i> " + item.first_name + "</span></div><div class='resultData phoneData'><span><i class='fas fa-phone-alt'></i> " + item.phone + "</span></div><div class='resultData emailData'><span><i class='fas fa-envelope'></i> " + item.email + "</span></div>" )
-                .appendTo( ul );
-            };
-        });
-
-      
-
-        function AutoCompleteSelectHandler(event, ui)
-        {
-            var selectedObj = ui.item;
-            console.table(selectedObj)
-            $(".btn_next_step1").trigger("click");
-            $(".step2-tab .user_id_spn").text(ui.item.id.substr(-4));
-            $(".step2-tab .user_name_spn").text(ui.item.first_name+" "+ui.item.last_name);
-            $(".step2-tab .user_phone_spn").text(ui.item.phone);
-            $(".step2-tab .user_email_spn").text(ui.item.email);
-            $("#fname").val(ui.item.first_name);
-            $("#lname").val(ui.item.last_name);
-            $("#email").val(ui.item.email);
-            $("#phone").val(ui.item.phone);
-            $("#id_session_customer").val(ui.item.user_id);
-
-
-
-        }
-
-
-        });
-
-        function activaTab(tab){
-            //$('.nav-tabs a[href="#' + tab + '"]').tab('show');
-            $("#order-tab").trigger("click");
-        };
-
-       // $(".step1 .cancel").click(function(){
-         //   window.location.assign("/"); 
-       // })
-
-       //Form Validation
-        $(function() {
-            $("#id_form_primary_step1").validate({
-                rules: {
-                    first_name: "required",
-                    last_name: "required",
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone_number: {
-                        required: true,
-                        minlength: 5
-                    }
-                },
-                // Specify validation error messages
-                messages: {
-                    first_name: "Please enter your firstname",
-                    last_name: "Please enter your lastname",
-                    phone_number: {
-                        required: "Please provide a phone_number",
-                        minlength: "Your phone number must be at least 5 digits long"
-                    },
-                    email: "Please enter a valid email address"
-                },
-                // Make sure the form is submitted to the destination defined
-                // in the "action" attribute of the form when valid
-                submitHandler: function(form) {
-                    form.submit();
-                }
-            });
-
-            $("#id_form_primary_step2").validate({
-                rules: {
-                    fabricType: "required",
-                    tayloringType: "required",
-                    meters: "required",
-                    color: {
-                        required: true,
-                         minlength: 2
-                    },
-                    qty: "required",
-                    ddate: "required",
-
-                },
-                // Specify validation error messages
-                messages: {
-                    fabricType: "Please select Fabric Type",
-                    tayloringType: "Please select tayloring Style",
-
-                    meters: "Please enter total meters",
-                    color: {
-                        required: "Please provide a color",
-                        minlength: "Your color must be at least 2 digits long"
-                    },
-                    qty: "Please enter a valid quantity",
-                    ddate: "Please enter a valid delivery date"
-                },
-                // Make sure the form is submitted to the destination defined
-                // in the "action" attribute of the form when valid
-                submitHandler: function(form) {
-                    form.submit();
-                }
-            });
-        }); 
-
-       $(function(){
-            $('.step1-cancel').click(function (e) {
-                window.location.assign("/");
-            });        
-            $('.step1-next').click(function (e) {
-                e.preventDefault();
-                var $form = $("#id_form_primary_step1");
-
-                // check if the input is valid using a 'valid' property
-                if (!$form.valid()) return false;
-
-                $.ajax({
-                        type: "POST",
-                        enctype: 'multipart/form-data',
-                        url: "/orders/ajax/submission/",
-                        data: $("#id_form_primary_step1").serialize(),
-                        success: function (data) {
-                            console.log("SUCCESS : ", data);
-                            $(".btn_next_step1").trigger("click");
-                            $(".step2-tab .user_id_spn").text(data['data']['id'].substr(-4));
-                            $(".step2-tab .user_name_spn").text(data['data']['first_name']+" "+data['data']['last_name']);
-                            $(".step2-tab .user_phone_spn").text("+971 "+data['data']['phone_number']);
-                            $(".step2-tab .user_email_spn").text(data['data']['email']);
-                            $("#id_session_customer").val(data['data']['id']);
-                            
-                        },
-                        error: function (e) {
-                            $(this).prop("disabled", false);    
-                            console.log("ERROR : ", e);
-                        }
-                    });
-                });
-                $('.step2-next').click(function (e) {
-                    e.preventDefault();
-                    var $form = $("#id_form_primary_step2");
-
-                    // check if the input is valid using a 'valid' property
-                    if (!$form.valid()) return false;
-
-                    $.ajax({
-                            type: "POST",
-                            enctype: 'multipart/form-data',
-                            url: "/orders/ajax/orderbook/crud/",
-                            data: $("#id_form_primary_step2").serialize(),
-                            success: function (data) {
-                                console.log("SUCCESS : ", data);
-                                $(".btn_next_step2").trigger("click");
-                                $(".dataRow .user_id_spn b").text(data['data']['user']['id']);
-                                $(".dataRow .order_id_spn b").text(data['data']['data']['id']);
-                                $(".dataRow .branch_id_spn b").text(data['data']['branch_title']);
-                                $(".dataRow .order_dt_spn b").text(data['data']['data']['deliver_at']);
-                                $(".dataRow .quantity_dt_spn b").text(data['data']['data']['quantity']);
-                                
-                            },
-                            error: function (e) {
-                                $(this).prop("disabled", false);    
-                                console.log("ERROR : ", e);
-                            }
-                        });
-                    });
-        });
-        
-
-
         
  
     </script>

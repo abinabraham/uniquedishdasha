@@ -95,6 +95,7 @@
 
             })
             .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                console.log(item)
                  return $( "<li>" )
 
                 .append( "<div class='resultData idData'><span><i class='fas fa-id-badge'></i> " + item.id + "</span></div><div class='resultData nameData'><span><i class='fas fa-user'></i> " + item.first_name + "</span></div><div class='resultData phoneData'><span><i class='fas fa-phone-alt'></i> " + item.phone + "</span></div><div class='resultData emailData'><span><i class='fas fa-envelope'></i> " + item.email + "</span></div>" )
@@ -106,7 +107,7 @@
 
         function AutoCompleteSelectHandler(event, ui)
         {
-            var selectedObj = ui.item;
+            var selectedObj = ui.item.id;
             console.table(selectedObj)
         }
 

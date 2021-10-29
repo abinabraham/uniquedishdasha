@@ -41,11 +41,17 @@ def get_customer_list(term):
         d['phone'] = phone
         d['first_name'] = first_name
         d['last_name'] = last_name
-        d['id'] = str(val['id'])
+        d['id'] = str(val['id'][-4:]) if len(val['id']) > 3 else val['id']
+        d['user_id'] = str(val['id'])
+
         d['label']= first_name+" "+last_name
-        d['value']= first_name+" "+last_name
+        d['value']= first_name + " " + last_name +" -  (" +email+") - "+ phone 
 
 
         result.append(d)
         # result.append('<div class="resultData idData"><span>' +str(val['id'])+ '<div class="resultData nameData"><span>'+first_name+' '+last_name+'</span></div> <div class="resultData emailData"><span>'+email+'</span></div><div class="resultData phoneData"><span>'+phone+'</span></div> ')
     return json.dumps(result)
+
+
+class DummyView(TemplateView):
+    template_name = "dummy.html"

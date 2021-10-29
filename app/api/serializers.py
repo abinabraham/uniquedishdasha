@@ -1,7 +1,8 @@
+from django.db import models
 from django.urls import path, include
 from rest_framework import routers, serializers, viewsets
 from app.accounts.models import CustomUser, Branch
-
+from app.orders.models import OrderBook
 
 class DynamicFieldsModelSerializer(serializers.ModelSerializer):
     """
@@ -33,3 +34,8 @@ class UserAllSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['id','first_name', 'last_name', 'email', \
                 'phone_number']
+
+class OrderBookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderBook
+        fields = ["id","branch","total_meters","quantity","deliver_at",]

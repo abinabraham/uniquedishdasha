@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+admin.site.register(FabricType)
+admin.site.register(TailoringStyle)
+admin.site.register(OrderBook)
