@@ -1,0 +1,12 @@
+{% load static %}
+<header class="text-center">
+    <div class="cotnainer">
+        <h2>Welcome {{request.user.username }} <span class="pull-right">(Media City)</span>
+                <span style="float:right">
+                    <a class="nav-link" href="{% url 'accounts:logout' %}" >
+                        logout
+                    </a>
+                </span>
+        </h2>
+    </div>
+</header>

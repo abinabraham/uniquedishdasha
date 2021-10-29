@@ -1,0 +1,110 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.min.css" rel="stylesheet">
+</head>
+<body>
+
+    {% include "common/header.html" %}
+
+    <div class="container">
+        <div class="orderFlowWrap">
+            <div class="orderFlow">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="masterSearchWrap">
+                            <form action="{% url 'orders:order_submission' %}"
+                                class="user_input_form" method="post">{% csrf_token %}                            
+                                    <input id="inputOrigin" class="form-control form-control-lg" type="text" 
+                                        placeholder="Search - Customer, Order"
+                                        name="user_input" aria-label=".form-control-lg example">
+                            </form>
+                        
+                            {% comment %} <select class="selectpicker  form-control-lg" data-show-subtext="true" data-live-search="true">
+                                <option data-subtext="" value="">No found, will create a new customer.</option>
+                                <option data-subtext="Rep California" value="">Tom Foolery</option>
+                                <option data-subtext="Sen California" value="">Bill Gordon</option>                                
+                            </select> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="dashGridItemWrap">
+                            <a href="#">
+                                <div class="dashGridItem" id="id_grid1">
+                                    <img src="/static/images/icon_Tailoring.svg" alt="">
+                                </div>
+                                <h4>Tailoring</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="dashGridItemWrap">
+                            <a href="#">
+                                <div class="dashGridItem">
+                                    <img src="/static/images/icon_Accessories.svg" alt="">
+                                </div>
+                                <h4>Accessories</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="dashGridItemWrap">
+                            <a href="#">
+                                <div class="dashGridItem">
+                                    <img src="/static/images/icon_Fabic.svg" alt="">
+                                </div>
+                                <h4>Fabrics</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="dashGridItemWrap">
+                            <a href="#">
+                                <div class="dashGridItem">
+                                    <img src="/static/images/icon_Katra.svg" alt="">
+                                </div>
+                                <h4>Katra</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js" integrity="sha256-erF9fIMASEVmAWGdOmQi615Bmx0L/vWNixxTNDXS4FQ=" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function () {
+        $(function() {
+            $("#inputOrigin").autocomplete({
+            source: "/origin_airport_search/",
+            select: function (event, ui) { //item selected
+                AutoCompleteSelectHandler(event, ui)
+            },
+            minLength: 2,
+            });
+        });
+
+        function AutoCompleteSelectHandler(event, ui)
+        {
+            var selectedObj = ui.item;
+            console.log(selectedObj)
+        }
+
+        $("#id_grid1").click(function(){
+            $(".user_input_form").submit();
+        })
+
+    });
+    </script>    
+</body>
+</html>
