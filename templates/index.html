@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.min.css" rel="stylesheet">
+    <!-- <link href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.min.css" rel="stylesheet"> -->
 </head>
 <body>
 
@@ -80,8 +80,9 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js" integrity="sha256-erF9fIMASEVmAWGdOmQi615Bmx0L/vWNixxTNDXS4FQ=" crossorigin="anonymous"></script>
+    <script src="/static/js/all.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js" integrity="sha256-erF9fIMASEVmAWGdOmQi615Bmx0L/vWNixxTNDXS4FQ=" crossorigin="anonymous"></script> -->
     <script>
     $(document).ready(function () {
         $(function() {
@@ -91,18 +92,29 @@
                 AutoCompleteSelectHandler(event, ui)
             },
             minLength: 2,
-            });
+
+            })
+            .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                 return $( "<li>" )
+
+                .append( "<div class='resultData idData'><span><i class='fas fa-id-badge'></i> " + item.id + "</span></div><div class='resultData nameData'><span><i class='fas fa-user'></i> " + item.first_name + "</span></div><div class='resultData phoneData'><span><i class='fas fa-phone-alt'></i> " + item.phone + "</span></div><div class='resultData emailData'><span><i class='fas fa-envelope'></i> " + item.email + "</span></div>" )
+                .appendTo( ul );
+            };
         });
+
+      
 
         function AutoCompleteSelectHandler(event, ui)
         {
             var selectedObj = ui.item;
-            console.log(selectedObj)
+            console.table(selectedObj)
         }
 
         $("#id_grid1").click(function(){
             $(".user_input_form").submit();
         })
+
+        $('.ui-menu-item').append('<li>Sample</li>');
 
     });
     </script>    

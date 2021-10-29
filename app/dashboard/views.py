@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from app.accounts.models import CustomUser
 from django.db.models import Q
 from django.contrib import messages
-from app.api.serializers import UserSerializer
+from app.api.serializers import UserSerializer, UserAllSerializer
 
 import json
 
@@ -27,9 +27,25 @@ def get_customer_list(term):
             | Q(username__startswith=term) | Q(phone_number__contains=term)
             | Q(email__contains=term)
         )
-    data = UserSerializer(customers, context={'request': None}, 
+    data = UserAllSerializer(customers, context={'request': None}, 
                 many=True,).data
     result = []
+    print(enumerate(data))
     for i, val in enumerate(data):
-        result.append(val['first_name']+', ('+str(val['id'])+')')
+        first_name = val['first_name'] if val['first_name'] else "-"
+        last_name = val['last_name'] if val['last_name'] else "-"
+        phone = val['phone_number'] if val['phone_number'] else "-"
+        email = val['email'] if val['email'] else "-"
+        d = dict()
+        d['email'] = email
+        d['phone'] = phone
+        d['first_name'] = first_name
+        d['last_name'] = last_name
+        d['id'] = str(val['id'])
+        d['label']= first_name+" "+last_name
+        d['value']= first_name+" "+last_name
+
+
+        result.append(d)
+        # result.append('<div class="resultData idData"><span>' +str(val['id'])+ '<div class="resultData nameData"><span>'+first_name+' '+last_name+'</span></div> <div class="resultData emailData"><span>'+email+'</span></div><div class="resultData phoneData"><span>'+phone+'</span></div> ')
     return json.dumps(result)
