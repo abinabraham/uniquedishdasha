@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import path, include
 from rest_framework import routers, serializers, viewsets
 from app.accounts.models import CustomUser, Branch
-from app.orders.models import OrderBook
+from app.orders.models import OrderBook, Orders
 
 class DynamicFieldsModelSerializer(serializers.ModelSerializer):
     """
@@ -33,9 +33,15 @@ class UserAllSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['id','first_name', 'last_name', 'email', \
-                'phone_number']
+                'phone_number', "address"]
 
 class OrderBookSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderBook
         fields = ["id","branch","total_meters","quantity","deliver_at",]
+
+class CompleteOrdersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Orders
+        fields = ["id","total_amnt_to_pay","total_paid_amount","balance_amount","order_status",
+                    "payment_status"]

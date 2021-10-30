@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dishdasha | Create Order</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <style>
         label.error{
@@ -47,7 +47,7 @@
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="summary-tab" data-bs-toggle="tab"
+                                <button class="nav-link btn_next_step3" id="summary-tab" data-bs-toggle="tab"
                                     data-bs-target="#summarySection" type="button" role="tab" aria-controls="contact"
                                     aria-selected="false">
                                     Summary
@@ -425,687 +425,16 @@
                         
                     </div>
                     <div class="tab-pane fade" id="measurementSection" role="tabpanel" aria-labelledby="">
-                        <div class="formPlate mb-4">
-                            <div class="titleWrap">
-                                <h3>
-                                    Order 1 - Measurements
-                                </h3>
-                            </div>
-                            <div class="dataRow">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <span>Customer ID: <span  class="user_id_spn"><b></b></span></span>
-                                    </div>
-                                    <div class="col-12">
-                                        <span>Order ID: <span  class="order_id_spn"><b></b></span></span>
-                                    </div>
-                                    <div class="col-12">
-                                        <span>Store Location: <span  class="branch_id_spn"><b></b></span></span>
-                                    </div>
-                                    <div class="container">
-                                        <hr>
-                                    </div>
-                                    <div class="col-4">
-                                        <span>Order date: <span  class="order_dt_spn"><b></b></span></span>
-                                    </div>
-                                    <div class="col-4 text-center">
-                                        <span>Q.of pieces: <br> <span  class="quantity_dt_spn"><b></b></span></span> <br>
-                                    </div>
-                                    <div class="col-4 ">
-                                        <span>Name: <b>Name Surname</b></span> <br>
-                                        <span>Phone Number: <b>0987654321</b></span> <br>
-                                        <span>Address: <b>1394 Wexford Way </b></span> <br>
-                                    </div>
-                                    <div class="container">
-                                        <hr>
-                                    </div>
-                                    <form action="" class="">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="collorWrap">
-                                                    <img src="/static/images/measurements/img2.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="collar" id="collar1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="collar" id="collar2">
-                                                        <input class="form-check-input" type="radio" name="collar" id="collar3">
-                                                        <input class="form-check-input" type="radio" name="collar" id="collar4">
-                                                    </div>
-                                                </div>
-  
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="zipWrap">
-                                                    <img src="/static/images/measurements/img5.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip2">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip3">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip4">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-1"></div>
-                                            <div class="col-sm-6">
-                                                <div class="zipWrap">
-                                                    <div class="mb-1"></div>
-                                                    <img src="/static/images/measurements/img6.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket2">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket3">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket4">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-sm-6">
-                                                <div class="pocketTwo">
-                                                    <div class="mb-1"></div>
-                                                    <img src="/static/images/measurements/img8.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo2">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo3">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo4">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo5">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo6">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3"></div>
-
-                                            <div class="col-sm-6">
-                                                <div class="tieWrap">
-                                                    <img src="/static/images/measurements/img7.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie2">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie3">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie4">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie5">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie6">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie7">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie8">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie9">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="penPocket">
-                                                    <img src="/static/images/measurements/penPocket.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket2">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket3">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket4">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket5">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket6">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3"></div>
-
-                                            <div class="col-sm-6">
-                                                <div class="sizeMap">
-                                                    <div class="sholderOne">
-                                                        <select name="" id="sholderOne">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="sholderTwo">
-                                                        <select name="" id="sholderTwo">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="mainWidth">
-                                                        <select name="" id="mainWidth">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="penPocket">
-                                                        <select name="" id="penPocket">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="insidePocket">
-                                                        <select name="" id="insidePocket">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="handSize">
-                                                        <select name="" id="handSize">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-                                                    <img src="/static/images/measurements/1.png" alt="">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="mb-3"></div>
-                                        
-                                                <div class="cuffLink">
-                                                    <img src="/static/images/measurements/cuffLink1.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink2">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink3">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink4">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"></div>
-
-                                                <div class="cuffLink">
-                                                    <img src="/static/images/measurements/cuffLink2.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink5"  checked="">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink6">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink7">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink8">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"></div>
-
-
-                                                <div class="insidePocketShape">
-                                                    <img src="/static/images/measurements/insidePocketShape.png" alt=""> <br>
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape2">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"></div>
-                                                <div class="buttons">
-                                                    <img src="/static/images/measurements/buttons.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons2">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons3">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons4">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons5">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"></div>
-                                                <div class="finalStyle">
-                                                    <img src="/static/images/measurements/finalStyle.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle2">
-                                                        <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle3">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3"></div>
-
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Width Collar</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Size Collar</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Shoulder</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Front Chest</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3"></div>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Bar</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Sleeve Length</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Front Pocket</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Side Pocket</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3"></div>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Open Pocket</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Fold Width</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Fold Length</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Two Line</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3"></div>
-
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Length</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3"></div>
-                        <div class="formPlate mb-4">
-                            <div class="titleWrap">
-                                <h3>
-                                    Order 2 - Measurements
-                                </h3>
-                            </div>
-                            <div class="dataRow">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <span>Customer Unique ID: <b>[Print ID here]</b></span>
-                                    </div>
-                                    <div class="col-12">
-                                        <span><b>UNIQUE DISHDASHA</b></span>
-                                    </div>
-                                    <div class="col-12">
-                                        <span>Store Location: <b>[Print Location here]</b></span>
-                                    </div>
-                                    <div class="container">
-                                        <hr>
-                                    </div>
-                                    <div class="col-4">
-                                        <span>Order date: <b>[DD/MM/YYYY]</b></span> <br>
-                                        <span>Receipt date: <b>[DD/MM/YYYY]</b></span>
-                                    </div>
-                                    <div class="col-4 text-center">
-                                        <span>Q.of pieces: <br> <b>4</b></span> <br>
-                                    </div>
-                                    <div class="col-4 ">
-                                        <span>Name: <b>Name Surname</b></span> <br>
-                                        <span>Phone Number: <b>0987654321</b></span> <br>
-                                        <span>Address: <b>1394 Wexford Way </b></span> <br>
-                                    </div>
-                                    <div class="container">
-                                        <hr>
-                                    </div>
-                                    <form action="" class="">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="collorWrap">
-                                                    <img src="/static/images/measurements/img2.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="collar" id="collar1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="collar" id="collar2">
-                                                        <input class="form-check-input" type="radio" name="collar" id="collar3">
-                                                        <input class="form-check-input" type="radio" name="collar" id="collar4">
-                                                    </div>
-                                                </div>
-  
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="zipWrap">
-                                                    <img src="/static/images/measurements/img5.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip2">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip3">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip4">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-1"></div>
-                                            <div class="col-sm-6">
-                                                <div class="zipWrap">
-                                                    <div class="mb-1"></div>
-                                                    <img src="/static/images/measurements/img6.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket2">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket3">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket4">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-sm-6">
-                                                <div class="pocketTwo">
-                                                    <div class="mb-1"></div>
-                                                    <img src="/static/images/measurements/img8.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo2">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo3">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo4">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo5">
-                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo6">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3"></div>
-
-                                            <div class="col-sm-6">
-                                                <div class="tieWrap">
-                                                    <img src="/static/images/measurements/img7.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie2">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie3">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie4">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie5">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie6">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie7">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie8">
-                                                        <input class="form-check-input" type="radio" name="tie" id="tie9">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="penPocket">
-                                                    <img src="/static/images/measurements/penPocket.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket2">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket3">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket4">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket5">
-                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket6">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3"></div>
-
-                                            <div class="col-sm-6">
-                                                <div class="sizeMap">
-                                                    <div class="sholderOne">
-                                                        <select name="" id="sholderOne2">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="sholderTwo">
-                                                        <select name="" id="sholderTwo2">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="mainWidth">
-                                                        <select name="" id="mainWidth2">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="penPocket">
-                                                        <select name="" id="penPocket2">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="insidePocket">
-                                                        <select name="" id="insidePocket2">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="handSize">
-                                                        <select name="" id="handSize2">
-                                                            <option value="">1.00</option>
-                                                            <option value="">1.25</option>
-                                                            <option value="">1.50</option>
-                                                            <option value="">1.75</option>
-                                                            <option value="">2.00</option>
-                                                        </select>
-                                                    </div>
-                                                    <img src="/static/images/measurements/1.png" alt="">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="mb-3"></div>
-                                        
-                                                <div class="cuffLink">
-                                                    <img src="/static/images/measurements/cuffLink1.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink2">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink3">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink4">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"></div>
-
-                                                <div class="cuffLink">
-                                                    <img src="/static/images/measurements/cuffLink2.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink5"  checked="">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink6">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink7">
-                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink8">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"></div>
-
-
-                                                <div class="insidePocketShape">
-                                                    <img src="/static/images/measurements/insidePocketShape.png" alt=""> <br>
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape2">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"></div>
-                                                <div class="buttons">
-                                                    <img src="/static/images/measurements/buttons.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons2">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons3">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons4">
-                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons5">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"></div>
-                                                <div class="finalStyle">
-                                                    <img src="/static/images/measurements/finalStyle.png" alt="">
-                                                    <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle1"  checked="">
-                                                        <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle2">
-                                                        <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle3">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Width Collar</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Size Collar</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Shoulder</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Front Chest</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3"></div>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Bar</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Sleeve Length</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Front Pocket</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Side Pocket</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3"></div>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Open Pocket</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Fold Width</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Fold Length</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Two Line</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3"></div>
-
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="inputWrap">
-                                                    <label for="" class="form-label">Length</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        <input name="session_quantity" type="hidden" class="form-control" id="id_session_quantity">
+                        
+                        
                         <div class="actionPlate step3">
                             <div class="row">
                                 <div class="col-6">
-                                    <button class="secondary step3">Back</button>
+                                    <button class="secondary step3-cancel">Back</button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="primary step3">Next</button>
+                                    <button class="primary step3-next">Next</button>
                                 </div>
                             </div>
                         </div>
@@ -1116,12 +445,12 @@
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <h3>
-                                            Add New Customer
+                                            Customer Details
                                         </h3>
                                     </div>
                                     <div class="col-sm-4">
                                         <h3 class="text-end">
-                                            ID - UD150
+                                            <span class="customer_id_summary">
                                         </h3>
                                     </div>
                                 </div>
@@ -1136,7 +465,7 @@
                                             <div class="dataGroup">
                                                 <label class="form-label">Customer Name</label>
                                                 <div class="form-control">
-                                                    <span>Name Surname</span>
+                                                    <span  class="customer_name_summary"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1144,7 +473,7 @@
                                             <div class="dataGroup">
                                                 <label class="form-label">Mobile Number</label>
                                                 <div class="form-control">
-                                                    <span>+999 09187654321</span>
+                                                    <span  class="customer_phone_summary"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1156,7 +485,7 @@
                                             <div class="dataGroup">
                                                 <label class="form-label">Fabric Type</label>
                                                 <div class="form-control">
-                                                    <span>Cotton</span>
+                                                    <span  class="fab_typ_summary"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1164,7 +493,7 @@
                                             <div class="dataGroup">
                                                 <label class="form-label">Tailoring Style</label>
                                                 <div class="form-control">
-                                                    <span>Kuwaiti Style </span>
+                                                    <span  class="tailr_styl_summary"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1172,7 +501,7 @@
                                             <div class="dataGroup">
                                                 <label class="form-label">Total Meters</label>
                                                 <div class="form-control">
-                                                    <span>3 meter</span>
+                                                   <span  class="totl_meters_summary"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1180,7 +509,7 @@
                                             <div class="dataGroup">
                                                 <label class="form-label">Quantity</label>
                                                 <div class="form-control">
-                                                    <span>2</span>
+                                                    <span  class="qty_summary"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1188,7 +517,7 @@
                                             <div class="dataGroup">
                                                 <label class="form-label">Delivery Date</label>
                                                 <div class="form-control">
-                                                    <span>18 Oct 2021</span>
+                                                    <span  class="deliver_dt_summary"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1205,27 +534,27 @@
                                     <div class="titleWrap">
                                         <h3>Payment Option</h3>
                                     </div>
-                                    <form action="">
+                                    <form action="" class="form_primary_summary" method="post"
+                                        id="id_form_primary_summary">{% csrf_token %}
+                                        <input name="session_complete_order" type="hidden" class="form-control" id="id_session_complete_order" value="">
+
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="inputWrap">
                                                         <label for="" class="form-label">Payment Method</label>
-                                                        <select name="" id="paymentMethod" class="form-select">
-                                                            <option value="">Sample</option>
-                                                            <option value="">Sample</option>
-                                                            <option value="">Sample</option>
-                                                            <option value="">Sample</option>
-                                                            <option value="">Sample</option>
-                                                            <option value="">Sample</option>
-                                                            <option value="">Sample</option>
+                                                        <select name="pay_methd" id="paymentMethod" class="form-select">
+                                                            <option value="PM1">Cash</option>
+                                                            <option value="PM2">Credit Card</option>
+                                                            <option value="PM3">Debit Card</option>
+                                                            <option value="PM4">Pay Later</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="inputWrap">
                                                         <label for="" class="form-label">Amount</label>
-                                                        <input type="number" class="form-control" id="" placeholder="">
+                                                        <input type="number" class="form-control" id="id_summary_amount" placeholder="" name="pay_amount" value="0">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1239,7 +568,7 @@
                                 <div class="col-12">
                                     <div class="totalData">
                                         <h4>
-                                           Total - <span>15</span> KWD
+                                           Total - <span id="id_total_amount"></span> KWD
                                         </h4>
                                     </div>
                                 </div>
@@ -1251,7 +580,7 @@
                                     <button class="secondary">Back</button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="primary">ADD ORDER</button>
+                                    <button class="primary step4-summary">SUBMIT ORDER</button>
                                 </div>
                             </div>
                         </div>
@@ -1262,6 +591,7 @@
     </div>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <script type="module"  src="/static/js/all.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script  type="module">
         $(jQuery).ready(function() {
 
@@ -1276,19 +606,19 @@
             $('#paymentMethod').select2();
 
 
-            $('#sholderOne').select2();
-            $('#sholderTwo').select2();
-            $('#mainWidth').select2();
-            $('#penPocket').select2();
-            $('#insidePocket').select2();
-            $('#handSize').select2();
+            $('.sholderOne').select2();
+            $('.sholderTwo').select2();
+            $('.mainWidth').select2();
+            $('.penPocket').select2();
+            $('.insidePocket').select2();
+            $('.handSize').select2();
  
-            $('#sholderOne2').select2();
-            $('#sholderTwo2').select2();
-            $('#mainWidth2').select2();
-            $('#penPocket2').select2();
-            $('#insidePocket2').select2();
-            $('#handSize2').select2();
+           // $('#sholderOne2').select2();
+            //$('#sholderTwo2').select2();
+            //$('#mainWidth2').select2();
+           // $('#penPocket2').select2();
+           // $('#insidePocket2').select2();
+          //  $('#handSize2').select2();
 
 
 
@@ -1431,6 +761,28 @@
                     form.submit();
                 }
             });
+
+            $("#id_form_primary_summary").validate({
+                rules: {
+                    pay_amount: "required",
+                    pay_methd: "required",
+                    
+
+                },
+                // Specify validation error messages
+                messages: {
+                    pay_amount: "Please enter amount to Pay",
+                    pay_methd: "Please select Payment Method",
+
+                   
+                },
+                // Make sure the form is submitted to the destination defined
+                // in the "action" attribute of the form when valid
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+
         }); 
 
        $(function(){
@@ -1480,18 +832,463 @@
                             success: function (data) {
                                 console.log("SUCCESS : ", data);
                                 $(".btn_next_step2").trigger("click");
-                                $(".dataRow .user_id_spn b").text(data['data']['user']['id']);
-                                $(".dataRow .order_id_spn b").text(data['data']['data']['id']);
-                                $(".dataRow .branch_id_spn b").text(data['data']['branch_title']);
-                                $(".dataRow .order_dt_spn b").text(data['data']['data']['deliver_at']);
-                                $(".dataRow .quantity_dt_spn b").text(data['data']['data']['quantity']);
-                                
+                                $("#id_session_quantity").val( data['data']['qty']);
+                
+                                var order_html='';
+                                for(var i = 1; i <= data['data']['qty']; i++) {
+                                    var j = i-1;
+
+                                order_html += `<form action="" class="form_measurement" method="post"
+                                        id="id_form_measurement_`+i+`">{% csrf_token %}
+                                        <div class="formPlate orderFormset`+i+` mb-4">
+                            <div class="titleWrap">
+                                <h3>
+                                    Order `+i+` - Measurements
+                                    <input name="session_measure_user" type="hidden" class="form-control" id="id_session_measure_user`+i+`" value="`+ data['data']['user']['id'] +`">
+                                    <input name="session_measure_order" type="hidden" class="form-control" id="id_session_measure_order`+i+`" value="`+ data['data']['data'][j]['id'] +`">
+                                    <input name="session_measure_complete_order" type="hidden" class="form-control" id="id_session_measure_complete_order`+i+`" value="`+ data['data']['complete_order_id'] +`">
+
+                                </h3>
+                            </div>
+                            <div class="dataRow">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span>Customer ID: <span  class="user_id_spn"><b>`+ data['data']['user']['id'] +`</b></span></span>
+                                    </div>
+                                    <div class="col-12">
+                                        <span>Order ID: <span  class="order_id_spn"><b>`+ data['data']['data'][j]['id'] +`</b></span></span>
+                                    </div>
+                                    <div class="col-12">
+                                        <span>Store Location: <span  class="branch_id_spn"><b>`+ data['data']['branch_title'] +`</b></span></span>
+                                    </div>
+                                    <div class="container">
+                                        <hr>
+                                    </div>
+                                    <div class="col-4">
+                                        <span>Order date: <span  class="order_dt_spn"><b>`+ data['data']['data'][j]['deliver_at'] +`</b></span></span>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <span>Q.of pieces: <br> <span  class="quantity_dt_spn"><b>`+ data['data']['data'][j]['quantity'] +`</b></span></span> <br>
+                                    </div>
+                                    <div class="col-4 ">
+                                        <span>Name: <span  class="customer_name_dt_spn"><b>`+ data['data']['user']['first_name'] +`</b></span></span> <br>
+                                        <span>Phone Number: <span  class="customer_phone_dt_spn"><b>`+ data['data']['user']['phone_number'] +`</b></span></span> <br>
+                                        <span>Address: <span  class="customer_address_dt_spn"><b>`+ data['data']['user']['address'] +`</b></span></span> <br>
+                                    </div>
+                                    <div class="container">
+                                        <hr>
+                                    </div>
+                                    <form action="" class="">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="collorWrap">
+                                                    <img src="/static/images/measurements/img2.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="collar" id="collar1" value="C1" checked="">
+                                                        <input class="form-check-input" type="radio" name="collar" id="collar2" value="C2">
+                                                        <input class="form-check-input" type="radio" name="collar" id="collar3" value="C3">
+                                                        <input class="form-check-input" type="radio" name="collar" id="collar4" value="C4">
+                                                    </div>
+                                                </div>
+  
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="zipWrap">
+                                                    <img src="/static/images/measurements/img5.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="zip" id="zip1" value="Z1" checked="">
+                                                        <input class="form-check-input" type="radio" name="zip" id="zip2" value="Z2">
+                                                        <input class="form-check-input" type="radio" name="zip" id="zip3" value="Z3">
+                                                        <input class="form-check-input" type="radio" name="zip" id="zip4" value="Z4">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-1"></div>
+                                            <div class="col-sm-6">
+                                                <div class="zipWrap">
+                                                    <div class="mb-1"></div>
+                                                    <img src="/static/images/measurements/img6.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket1" value="P1" checked="">
+                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket2" value="P2">
+                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket3" value="P3">
+                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket4" value="P4">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-6">
+                                                <div class="pocketTwo">
+                                                    <div class="mb-1"></div>
+                                                    <img src="/static/images/measurements/img8.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo1" value="P21"  checked="">
+                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo2" value="P22">
+                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo3" value="P23">
+                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo4" value="P24">
+                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo5" value="P25">
+                                                        <input class="form-check-input" type="radio" name="pocketTwo" id="pocketTwo6" value="P26">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3"></div>
+
+                                            <div class="col-sm-6">
+                                                <div class="tieWrap">
+                                                    <img src="/static/images/measurements/img7.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="tie" id="tie1" value="T1"  checked="">
+                                                        <input class="form-check-input" type="radio" name="tie" id="tie2" value="T2">
+                                                        <input class="form-check-input" type="radio" name="tie" id="tie3" value="T3">
+                                                        <input class="form-check-input" type="radio" name="tie" id="tie4" value="T4">
+                                                        <input class="form-check-input" type="radio" name="tie" id="tie5" value="T5">
+                                                        <input class="form-check-input" type="radio" name="tie" id="tie6" value="T6">
+                                                        <input class="form-check-input" type="radio" name="tie" id="tie7" value="T7">
+                                                        <input class="form-check-input" type="radio" name="tie" id="tie8" value="T8">
+                                                        <input class="form-check-input" type="radio" name="tie" id="tie9" value="T9">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="penPocket">
+                                                    <img src="/static/images/measurements/penPocket.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket1" value="PP1"  checked="">
+                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket2" value="PP2">
+                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket3" value="PP3">
+                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket4" value="PP4">
+                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket5" value="PP5">
+                                                        <input class="form-check-input" type="radio" name="penpocket" id="penpocket6" value="PP6">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3"></div>
+
+                                            <div class="col-sm-6">
+                                                <div class="sizeMap">
+                                                    <div class="sholderOne">
+                                                        <select name="sholderOne" id="sholderOne`+i+`">
+                                                            <option value="1.00">1.00</option>
+                                                            <option value="1.2">1.25</option>
+                                                            <option value="1.50">1.50</option>
+                                                            <option value="1.75">1.75</option>
+                                                            <option value="2.00">2.00</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="sholderTwo">
+                                                        <select name="sholderTwo" id="sholderTwo`+i+`">
+                                                            <option value="1.00">1.00</option>
+                                                            <option value="1.2">1.25</option>
+                                                            <option value="1.50">1.50</option>
+                                                            <option value="1.75">1.75</option>
+                                                            <option value="2.00">2.00</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="mainWidth">
+                                                        <select name="mainWidth" id="mainWidth`+i+`">
+                                                            <option value="1.00">1.00</option>
+                                                            <option value="1.2">1.25</option>
+                                                            <option value="1.50">1.50</option>
+                                                            <option value="1.75">1.75</option>
+                                                            <option value="2.00">2.00</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="penPocket">
+                                                        <select name="penPocket" id="penPocket`+i+`">
+                                                            <option value="1.00">1.00</option>
+                                                            <option value="1.2">1.25</option>
+                                                            <option value="1.50">1.50</option>
+                                                            <option value="1.75">1.75</option>
+                                                            <option value="2.00">2.00</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="insidePocket">
+                                                        <select name="insidePocket" id="insidePocket`+i+`">
+                                                            <option value="1.00">1.00</option>
+                                                            <option value="1.2">1.25</option>
+                                                            <option value="1.50">1.50</option>
+                                                            <option value="1.75">1.75</option>
+                                                            <option value="2.00">2.00</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="handSize">
+                                                        <select name="handSize" id="handSize`+i+`">
+                                                            <option value="1.00">1.00</option>
+                                                            <option value="1.2">1.25</option>
+                                                            <option value="1.50">1.50</option>
+                                                            <option value="1.75">1.75</option>
+                                                            <option value="2.00">2.00</option>
+                                                        </select>
+                                                    </div>
+                                                    <img src="/static/images/measurements/1.png" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="mb-3"></div>
+                                        
+                                                <div class="cuffLink">
+                                                    <img src="/static/images/measurements/cuffLink1.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink1" value="CL1" checked="">
+                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink2" value="CL2">
+                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink3" value="CL3">
+                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink4" value="CL4">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3"></div>
+
+                                                <div class="cuffLink">
+                                                    <img src="/static/images/measurements/cuffLink2.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink5" value="CL5"  checked="">
+                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink6" value="CL6">
+                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink7" value="CL7">
+                                                        <input class="form-check-input" type="radio" name="cufflink" id="cufflink8" value="CL8">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3"></div>
+
+
+                                                <div class="insidePocketShape">
+                                                    <img src="/static/images/measurements/insidePocketShape.png" alt=""> <br>
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape1" value="IPS1"  checked="">
+                                                        <input class="form-check-input" type="radio" name="insidePocketShape" id="insidePocketShape2" value="IPS2">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3"></div>
+                                                <div class="buttons">
+                                                    <img src="/static/images/measurements/buttons.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons1" value="BTN1" checked="">
+                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons2" value="BTN2">
+                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons3" value="BTN3">
+                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons4" value="BTN4">
+                                                        <input class="form-check-input" type="radio" name="buttons" id="buttons5" value="BTN5">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3"></div>
+                                                <div class="finalStyle">
+                                                    <img src="/static/images/measurements/finalStyle.png" alt="">
+                                                    <div class="inputGroup">
+                                                        <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle1" value="FS1"  checked="">
+                                                        <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle2" value="FS2" >
+                                                        <input class="form-check-input" type="radio" name="finalStyle" id="finalStyle3" value="FS3" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3"></div>
+
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Width Collar</label>
+                                                    <input type="text" class="form-control" name="width_collar">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Size Collar</label>
+                                                    <input type="text" class="form-control"  name="size_collar">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Shoulder</label>
+                                                    <input type="text" class="form-control" name="shoulder">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Front Chest</label>
+                                                    <input type="text" class="form-control" name="front_chest">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3"></div>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Bar</label>
+                                                    <input type="text" class="form-control" name="bar">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Sleeve Length</label>
+                                                    <input type="text" class="form-control" name="sleeve_length">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Front Pocket</label>
+                                                    <input type="text" class="form-control" name="front_pocket">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Side Pocket</label>
+                                                    <input type="text" class="form-control"name="size_pocket">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3"></div>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Open Pocket</label>
+                                                    <input type="text" class="form-control" name="big_pocket">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Fold Width</label>
+                                                    <input type="text" class="form-control" name="fold_width">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Fold Length</label>
+                                                    <input type="text" class="form-control" name="fold_length">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Two Line</label>
+                                                    <input type="text" class="form-control" name="two_line">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3"></div>
+
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Length</label>
+                                                    <input type="text" class="form-control" name="length">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3"></div></form>`
+
+                                     $('#sholderOne'+i).select2();
+                                    $('#sholderTwo'+i).select2();
+                                    $('#mainWidth'+i).select2();
+                                    $('#penPocket'+i).select2();
+                                    $('#insidePocket'+i).select2();
+                                    $('#handSize'+i).select2();
+                                }
+                                $('#measurementSection').append(order_html);                                
+
                             },
                             error: function (e) {
                                 $(this).prop("disabled", false);    
                                 console.log("ERROR : ", e);
                             }
                         });
+                    });
+
+
+                    //Step Measurement submission
+                    $('.step3-next').click(function (e) {
+                        e.preventDefault();
+                        var qty = $("#id_session_quantity").val();
+                        for(var i = 1; i <= qty; i++) {
+                            var $form = $("#id_form_measurement_"+i);
+                            $.ajax({
+                                type: "POST",
+                                enctype: 'multipart/form-data',
+                                url: "/orders/ajax/measurement/crud/",
+                                data: $form.serialize(),
+                                success: function (data) {
+                                    console.log("SUCCESS : ", data);  
+                                    $(".btn_next_step3").trigger("click");
+
+                                    $(".customer_id_summary").text(data['data']['customer']['id']);
+                                    $(".customer_name_summary").text(data['data']['customer']['first_name']+" "+data['data']['customer']['last_name']);
+                                    $(".customer_phone_summary").text(data['data']['customer']['phone_number']);
+                                    $(".fab_typ_summary").text(data['data']['fab_title']);
+                                    $(".tailr_styl_summary").text(data['data']['tailr_title']);
+                                    $(".totl_meters_summary").text(data['data']['order']['total_meters']);
+                                    $(".qty_summary").text(data['data']['order']['quantity']);
+                                    $(".deliver_dt_summary").text(data['data']['order']['deliver_at']);
+
+                                    $("#id_summary_amount").val(data['data']['comp_ordr_obj']['total_amnt_to_pay']);
+                                    $("#id_total_amount").text(data['data']['comp_ordr_obj']['total_amnt_to_pay']);
+                                    $("#id_session_complete_order").val(data['data']['comp_ordr_obj']['id']);
+
+
+
+                                },
+                                error: function (e) {
+                                    console.log("ERROR : ", e);
+                                }
+                            });
+
+                        }
+                    });
+
+
+                    //Step Measurement submission
+                    $('.step4-summary').click(function (e) {
+                        e.preventDefault();
+                        var complete_order_id =  $("#id_session_complete_order");
+                        var $form = $("#id_form_primary_summary");
+
+                        Swal.fire({
+                                title: 'Are you sure?',
+                                text: "Please confirm the amount and payment method.",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Please proceed.'
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+
+                                    $.ajax({
+                                        type: "POST",
+                                        enctype: 'multipart/form-data',
+                                        url: "/orders/ajax/order/creation/",
+                                        data: $form.serialize(),
+                                        success: function (data) {
+                                            Swal.fire(
+                                                'Order Placed successfully!',
+                                                'Your order has been created..',
+                                                'success'
+                                                )
+
+                                        },
+                                        error: function (e) {
+                                            console.log(e);
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Oops...',
+                                                text: 'Something went wrong!',
+                                                footer: e.status +"-"+ e.statusText
+                                                })
+                                        }
+                                    });
+
+
+                                    
+                                }
+                                })
+
+                        
+
                     });
         });
         
