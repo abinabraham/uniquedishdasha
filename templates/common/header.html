@@ -1,12 +1,27 @@
 {% load static %}
 <header class="text-center">
-    <div class="cotnainer">
-        <h2>Welcome {{request.user.username }} <span class="pull-right">(Media City)</span>
-                <span style="float:right">
-                    <a class="nav-link" href="{% url 'accounts:logout' %}" >
-                        logout
-                    </a>
-                </span>
-        </h2>
-    </div>
+   <div class="cotnainer">
+      <h2>
+         <span style="float:left">
+         <a class="nav-link" href="/" >
+         Home
+         </a>
+         </span>
+         Welcome {{request.user.username }} <span class="pull-right">(Media City)</span>
+         <span style="float:right">
+         <a class="nav-link" href="{% url 'accounts:logout' %}" >
+         logout
+         </a>
+         </span>
+      </h2>
+      <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
+         <div class="container-xxl d-flex align-items-md-center">
+            <div class="dropdown ms-3">
+               <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                  <option value="Salhia">Salhia</option>
+               </select>
+            </div>
+         </div>
+      </nav>
+   </div>
 </header>

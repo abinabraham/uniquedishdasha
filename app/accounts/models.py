@@ -3,6 +3,8 @@
 # -*- coding: utf-8 -*-
 # Accounts related models will adde here
 
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
@@ -12,14 +14,17 @@ from django_countries.fields import CountryField
 
 USER_TYPES = (
     (0, 'SuperAdmin'),
-    (1, 'Branch Admin'),
-    (2, 'Branch User'), #Customer
+    (1, 'Branch Admin'), #Staff
+    (2, 'Customer'), #Customer
 )
 
 class Branch(models.Model):
     help = "Branch Table"
-    country = CountryField()
+    country = CountryField(default="KW")
     title = models.CharField("Branch Name", max_length=50,null=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
@@ -39,7 +44,10 @@ class CustomUser(AbstractUser):
     must include UserManager() as object
     """
     help = "User Table"
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user_id = models.IntegerField(null=True, blank=True)
     role_name = models.PositiveSmallIntegerField(choices=USER_TYPES, default=1)
+    country = CountryField(default="KW")
     phone_number = models.CharField("Phone Number",null=True, blank=True, max_length=100)
     place = models.CharField("Place",null=True, blank=True, max_length=100)
     area = models.CharField("Area",null=True, blank=True, max_length=100)
@@ -49,6 +57,8 @@ class CustomUser(AbstractUser):
     
     is_verified = models.BooleanField(default=False)
     is_profile_completed = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False) #means role=1
+
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
