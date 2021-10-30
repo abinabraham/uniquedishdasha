@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
 from django.http import HttpResponse
 from app.accounts.models import CustomUser
 from django.db.models import Q
@@ -55,3 +55,15 @@ def get_customer_list(term):
 
 class DummyView(TemplateView):
     template_name = "dummy.html"
+
+class ProfileView(FormView):
+    template_name = "dashboard/profile.html"
+
+    def get(self, request, *args, **kwargs):
+        """Handle GET requests: instantiate a blank version of the form."""
+        context = {'redir':""}
+        return render(request, self.template_name, context)
+    
+    def post(self, request, *args, **kwargs):
+        context = {}
+        return render(request, self.template_name, context)

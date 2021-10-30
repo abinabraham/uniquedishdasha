@@ -20,9 +20,15 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="masterSearchWrap">
-                            <form action="{% url 'orders:order_submission' %}"
+                            <form action="{% url 'dashboard:customer_profile' %}"
                                 class="user_input_form" method="post">{% csrf_token %}                            
                                     <input id="inputOrigin" class="form-control form-control-lg" type="text" 
+                                        placeholder="Search - Customer, Order"
+                                        name="user_input" aria-label=".form-control-lg example">
+                            </form>
+                            <form action="{% url 'orders:order_submission' %}"
+                                class="order_input_form" method="post">{% csrf_token %}                            
+                                    <input id="inputOrigin" class="form-control form-control-lg" type="hidden" 
                                         placeholder="Search - Customer, Order"
                                         name="user_input" aria-label=".form-control-lg example">
                             </form>
@@ -107,12 +113,14 @@
 
         function AutoCompleteSelectHandler(event, ui)
         {
-            var selectedObj = ui.item.id;
-            console.table(selectedObj)
+            var selectedObj = ui.item;
+            console.table(selectedObj);
+            $(".user_input_form").submit();
         }
 
+       
         $("#id_grid1").click(function(){
-            $(".user_input_form").submit();
+            $(".order_input_form").submit();
         })
 
         $('.ui-menu-item').append('<li>Sample</li>');
