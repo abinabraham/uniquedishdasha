@@ -7,6 +7,40 @@ header{
     height: 65px;
     background: rgb(212, 212, 212);
     margin-bottom: 20px;
+    .homeLocWrap{
+        margin-top: 6px;
+        a{
+            font-size: 35px;
+            color: black;
+            text-decoration: none;
+        }
+        .select2{
+            width: 160px!important;
+            margin-top: -15px;
+        }
+    }
+    .headerLogo{
+        text-align: center;
+        img{
+            width: 45px;
+            max-width: 100%;
+        }
+    }
+    .userLog{
+        text-align: right;
+        p{
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 0;
+            margin-top: 10px;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+        }
+    }
 }
 
 hr{
