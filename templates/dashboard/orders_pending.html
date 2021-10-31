@@ -1,0 +1,143 @@
+{% load static %}<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+    <body>
+         
+        <div class="fakeHeader">
+            <div class="container">
+                <div class="backButton">
+                    <a href="/"><i class="fas fa-arrow-left"></i> Back</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="orderFlowWrap">
+                <div class="orderFlow overFlowScroll">
+                    {% if existing_orders %}
+                    <div class="subtitleWrap">
+                        <h3>
+                            Pending orders
+                        </h3>
+                    </div>
+                    {% for exist_order in existing_orders %}
+                    
+                    <div class="list-group">
+                        <div class="list-group-inwrap">
+                            <div class="d-flex w-100 justify-content-between mb-2">
+                                {% for orders in exist_order.measurements.all %}
+                                    <h5 class="mb-2">Order ID - {{ orders.order.order_id }}</h5>
+                                {% endfor %}
+                                 <div class="editButton">
+                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id "invoice" %}" class="btn btn-outline-primary" download>
+                                        <i class="fas fa-download"></i> INVOICE
+                                    </a>
+                                </div> 
+                            </div>
+                            <div class="d-flex w-100 justify-content-between mb-2">
+                                <h6 class=""><i class="fas fa-calendar-alt"></i> <small>Delivery Date -</small> {{ exist_order.measurements.all.0.order.deliver_at }}</h6>
+                                <div class="badges-wrap">
+                                    <span class="badge bg-secondary">{{ exist_order.get_order_status_display }}</span>
+                                    <span class="badge bg-success">{{ exist_order.get_payment_status_display }}</span>
+                                </div>
+                            </div>
+                            <div class="d-flex w-100 justify-content-between mb-2">
+                                <h6 class=""><i class="fas fa-user"></i> <small>{{ exist_order.customer.first_name }} {{ exist_order.customer.last_name }} -</small> {{  exist_order.customer.user_id }} </h6>
+                                
+                            </div>
+                            
+                            <hr>
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>Fabric Type</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                        {% for orders in exist_order.measurements.all %}
+                                            <span>{{ orders.fb_type }}, </span>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>Tayloring Style</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                        {% for orders in exist_order.measurements.all %}
+                                            <span>{{ orders.tailr_styl }}, </span>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>Color</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                        {% for orders in exist_order.measurements.all %}
+                                            <span>{{ orders.color }}, </span>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>Total Amt</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                        <span>{{ exist_order.total_amnt_to_pay }}</span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>Total paid</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                        <span>{{ exist_order.total_paid_amount }}</span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>Balance</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                        <span>{{ exist_order.balance_amount }}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <div class="subtitleWrap">
+                        <h3>
+                            No pending orders
+                        </h3>
+                    </div>
+                    
+                    {% endif %}
+
+                   
+
+
+                </div>
+            </div>
+        </div>
+
+       
+        
+        <script src="/static/js/all.js" async defer></script>
+    </body>
+</html>

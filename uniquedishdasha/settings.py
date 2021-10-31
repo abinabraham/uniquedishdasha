@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_countries',
     'rest_framework',
     'simple_history',
+    'xhtml2pdf'
 ]
 
 MIDDLEWARE = [

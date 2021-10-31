@@ -4,12 +4,17 @@
 # Order related models will adde here
 
 import uuid
+import random
+import string
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 from django.utils import timezone
 from django_countries.fields import CountryField
 from simple_history.models import HistoricalRecords
+from datetime import datetime
+from core.utils import id_generator
 
 from app.accounts.models import CustomUser, Branch
 
@@ -49,16 +54,12 @@ class TailoringStyle(models.Model):
 class OrderBook(models.Model):
     help = "Tailoring Style"
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    order_id = models.CharField("Order ID",null=True, blank=True, max_length=100)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE,related_name="order_branch"
                                           , null=True, blank=True)
     customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE,related_name="order_customer")
     is_customer_own_fabric = models.BooleanField(default=True)
-    fb_type = models.ForeignKey(FabricType, on_delete=models.CASCADE,related_name="fbrc_typ"
-                                             , null=True, blank=True)
-    tailr_styl = models.ForeignKey(TailoringStyle, on_delete=models.CASCADE,related_name="tailr_styl"
-                                             , null=True, blank=True)
-    color = models.CharField("Color", max_length=50,null=True, blank=True)
-    total_meters = models.CharField("Total Meters", max_length=50,null=True, blank=True)
+
     quantity = models.CharField("Quantity", max_length=50,null=True, blank=True)
     deliver_at = models.DateTimeField()
     is_active = models.BooleanField(default=True)
@@ -74,6 +75,12 @@ class OrderBook(models.Model):
         ordering = ["-created_at"]
         verbose_name_plural = "Order Book"
         verbose_name = "Order Book"
+    
+
+    
+    def save(self, *args, **kwargs):
+        self.order_id=id_generator()
+        super(OrderBook, self).save(*args, **kwargs)
 
 class PricingPlans(models.Model):
     help = "Pricing Plans"
@@ -94,6 +101,29 @@ class PricingPlans(models.Model):
         ordering = ["-id"]
         verbose_name_plural = "Pricing plans"
         verbose_name = "Pricing plans"
+
+
+
+
+class PricingPlansFabricTyp(models.Model):
+    help = "Pricing Plans Fabric Type"
+    fabr_typ = models.ForeignKey(FabricType, on_delete=models.CASCADE,related_name="fabr_type_payment"
+                                             , null=True, blank=True)
+    amount = models.DecimalField("Single Order Amount", max_digits=5, decimal_places=2, default=0)
+    country = CountryField(default="KW")
+    is_active = models.BooleanField(default=True)
+
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.fabr_typ.title)
+
+    class Meta:
+        ordering = ["-id"]
+        verbose_name_plural = "Pricing Plans Fabric Type"
+        verbose_name = "Pricing Plans Fabric Type"
 
 class Collars(models.TextChoices):
     COLLAR1 = 'C1', 'Collar1'
@@ -168,6 +198,7 @@ class FinalStyle(models.TextChoices):
 class Measurements(models.Model):
     help = "Measurements"
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    measure_id = models.CharField("Measurement ID",null=True, blank=True, max_length=100)
     order = models.ForeignKey(OrderBook, on_delete=models.CASCADE,related_name="order_measurement"
                                           , null=True, blank=True)
     collar = models.CharField(
@@ -248,6 +279,12 @@ class Measurements(models.Model):
     two_line = models.CharField("Two Line", max_length=50,null=True, blank=True) 
     length = models.CharField("Length", max_length=50,null=True, blank=True) 
 
+    fb_type = models.ForeignKey(FabricType, on_delete=models.CASCADE,related_name="fbrc_typ"
+                                             , null=True, blank=True)
+    tailr_styl = models.ForeignKey(TailoringStyle, on_delete=models.CASCADE,related_name="tailr_styl"
+                                             , null=True, blank=True)
+    color = models.CharField("Color", max_length=50,null=True, blank=True)
+    total_meters = models.CharField("Total Meters", max_length=50,null=True, blank=True)
     
 
     def __str__(self):
@@ -257,6 +294,11 @@ class Measurements(models.Model):
         ordering = ["-created_at"]
         verbose_name_plural = "Measurement"
         verbose_name = "Measurements"
+
+    
+    def save(self, *args, **kwargs):
+        self.measure_id=id_generator()
+        super(Measurements, self).save(*args, **kwargs)
 
 
 class OrderStatus(models.TextChoices):
@@ -283,6 +325,7 @@ class PaymentMethod(models.TextChoices):
 class Orders(models.Model):
     help = "Orders"
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    order_id = models.CharField("Order ID",null=True, blank=True, max_length=100)
     orders = models.ManyToManyField(OrderBook)
     measurements = models.ManyToManyField(Measurements)
     customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE,related_name="main_order_customer")
@@ -322,4 +365,9 @@ class Orders(models.Model):
         ordering = ["-created_at"]
         verbose_name_plural = "Complete Order"
         verbose_name = "Complete Order"
+
+    
+    def save(self, *args, **kwargs):
+        self.order_id=id_generator()
+        super(Orders, self).save(*args, **kwargs)
 

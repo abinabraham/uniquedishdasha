@@ -15,9 +15,5 @@ urlpatterns = [
     path('ajax/orderbook/crud/', login_required(order_ajaxcreaion), name='order_ajaxcreaion'),    
     path('ajax/measurement/crud/', login_required(measurement_ajaxcreaion), name='measurement_ajaxcreaion'),
     path('ajax/order/creation/', login_required(complete_order_creation), name='complete_order_creation'),
-
-
-    
-
     
 ]

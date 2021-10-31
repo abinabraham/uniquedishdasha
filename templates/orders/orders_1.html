@@ -73,7 +73,7 @@
                                         <div class="row">
                                             <div class="col-2">
                                                 <span>
-                                                    {{ customer.id }}
+                                                    {{ customer.user_id }}
                                                 </span>
                                             </div>
                                             <div class="col-3">
@@ -278,7 +278,7 @@
                                 <div class="row">
                                     <div class="col-2">
                                         <span>
-                                            DD {{ customer.id }}
+                                             {{ customer.user_id }}
                                         </span>
                                     </div>
                                     <div class="col-3">
@@ -339,13 +339,13 @@
                                                 <label for="" class="form-label">Customer Own Fabric?</label>
                                                 <div class="checkWrap">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Yes">
                                                         <label class="form-check-label" for="flexRadioDefault1">
                                                           Yes
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked value="No">
                                                         <label class="form-check-label" for="flexRadioDefault2">
                                                           No
                                                         </label>
@@ -355,42 +355,8 @@
 
                                         </div>
                                         <div class="col-md-6"></div>
-                                        <div class="col-md-6">
-                                            <div class="inputWrap">
-                                                <label for="" class="form-label">Fabric Type *</label>
-                                                <select name="fabricType" id="fabricType" class="form-select">
-                                                    <option value="">Select fabric type</option>
-                                                    {% for item in fbtype %}
-                                                    <option value="{{ item.id }}">{{ item.title }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="inputWrap">
-                                                <label for="" class="form-label">Tayloring Style *</label>
-                                                <select name="tayloringType" id="tayloringType" class="form-select">
-                                                    <option value="">Select Style</option>
-                                                    {% for item in tailstyle %}
-                                                    <option value="{{ item.pk }}">{{ item.title }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="inputWrap">
-                                                <label for="" class="form-label">Color *</label>
-                                                <input name="color" type="text" class="form-control" id="color" placeholder="Color">
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="inputWrap">
-                                                <label for="" class="form-label">Total meters *</label>
-                                                <input name="meters" type="number" class="form-control" id="meters" placeholder="Total meters">
-
-                                            </div>
-                                        </div>
+                                        
+                                        
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">Quantity *</label>
@@ -671,7 +637,7 @@
             var selectedObj = ui.item;
             console.table(selectedObj)
             $(".btn_next_step1").trigger("click");
-            $(".step2-tab .user_id_spn").text(ui.item.id.substr(-4));
+            $(".step2-tab .user_id_spn").text(ui.item.user_id);
             $(".step2-tab .user_name_spn").text(ui.item.first_name+" "+ui.item.last_name);
             $(".step2-tab .user_phone_spn").text(ui.item.phone);
             $(".step2-tab .user_email_spn").text(ui.item.email);
@@ -731,27 +697,12 @@
 
             $("#id_form_primary_step2").validate({
                 rules: {
-                    fabricType: "required",
-                    tayloringType: "required",
-                    meters: "required",
-                    color: {
-                        required: true,
-                         minlength: 2
-                    },
                     qty: "required",
                     ddate: "required",
 
                 },
                 // Specify validation error messages
                 messages: {
-                    fabricType: "Please select Fabric Type",
-                    tayloringType: "Please select tayloring Style",
-
-                    meters: "Please enter total meters",
-                    color: {
-                        required: "Please provide a color",
-                        minlength: "Your color must be at least 2 digits long"
-                    },
                     qty: "Please enter a valid quantity",
                     ddate: "Please enter a valid delivery date"
                 },
@@ -783,6 +734,9 @@
                 }
             });
 
+            
+
+
         }); 
 
        $(function(){
@@ -804,11 +758,11 @@
                         success: function (data) {
                             console.log("SUCCESS : ", data);
                             $(".btn_next_step1").trigger("click");
-                            $(".step2-tab .user_id_spn").text(data['data']['id'].substr(-4));
+                            $(".step2-tab .user_id_spn").text(data['data']['user_id']);
                             $(".step2-tab .user_name_spn").text(data['data']['first_name']+" "+data['data']['last_name']);
                             $(".step2-tab .user_phone_spn").text("+971 "+data['data']['phone_number']);
                             $(".step2-tab .user_email_spn").text(data['data']['email']);
-                            $("#id_session_customer").val(data['data']['id']);
+                            $("#id_session_customer").val(data['data']['user_id']);
                             
                         },
                         error: function (e) {
@@ -844,7 +798,7 @@
                             <div class="titleWrap">
                                 <h3>
                                     Order `+i+` - Measurements
-                                    <input name="session_measure_user" type="hidden" class="form-control" id="id_session_measure_user`+i+`" value="`+ data['data']['user']['id'] +`">
+                                    <input name="session_measure_user" type="hidden" class="form-control" id="id_session_measure_user`+i+`" value="`+ data['data']['user']['user_id'] +`">
                                     <input name="session_measure_order" type="hidden" class="form-control" id="id_session_measure_order`+i+`" value="`+ data['data']['data'][j]['id'] +`">
                                     <input name="session_measure_complete_order" type="hidden" class="form-control" id="id_session_measure_complete_order`+i+`" value="`+ data['data']['complete_order_id'] +`">
 
@@ -853,7 +807,7 @@
                             <div class="dataRow">
                                 <div class="row">
                                     <div class="col-12">
-                                        <span>Customer ID: <span  class="user_id_spn"><b>`+ data['data']['user']['id'] +`</b></span></span>
+                                        <span>Customer ID: <span  class="user_id_spn"><b>`+ data['data']['user']['user_id'] +`</b></span></span>
                                     </div>
                                     <div class="col-12">
                                         <span>Order ID: <span  class="order_id_spn"><b>`+ data['data']['data'][j]['id'] +`</b></span></span>
@@ -865,7 +819,7 @@
                                         <hr>
                                     </div>
                                     <div class="col-4">
-                                        <span>Order date: <span  class="order_dt_spn"><b>`+ data['data']['data'][j]['deliver_at'] +`</b></span></span>
+                                        <span>Deliver date: <span  class="order_dt_spn"><b>`+ data['data']['data'][j]['deliver_at'] +`</b></span></span>
                                     </div>
                                     <div class="col-4 text-center">
                                         <span>Q.of pieces: <br> <span  class="quantity_dt_spn"><b>`+ data['data']['data'][j]['quantity'] +`</b></span></span> <br>
@@ -878,7 +832,49 @@
                                     <div class="container">
                                         <hr>
                                     </div>
-                                    <form action="" class="">
+
+                                            <div class="col-md-6">
+                                            <div class="inputWrap">
+                                                <label for="" class="form-label">Fabric Type *</label>
+                                                <select name="fabricTypes" id="fabricType" class="form-select">
+                                                    <option value="">Select fabric type</option>
+                                                    {% for item in fbtype %}
+                                                    <option value="{{ item.id }}">{{ item.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="inputWrap">
+                                                <label for="" class="form-label">Tayloring Style *</label>
+                                                <select name="tayloringType" id="tayloringType" class="form-select">
+                                                    <option value="">Select Style</option>
+                                                    {% for item in tailstyle %}
+                                                    <option value="{{ item.pk }}">{{ item.title }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="inputWrap">
+                                                <label for="" class="form-label">Color *</label>
+                                                <input name="color" type="text" class="form-control" id="color" placeholder="Color">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="inputWrap">
+                                                <label for="" class="form-label">Total meters *</label>
+                                                <input name="meters" type="number" class="form-control" id="meters" placeholder="Total meters">
+
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <hr>
+                                        </div>
+
+                                    
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="collorWrap">
@@ -892,6 +888,8 @@
                                                 </div>
   
                                             </div>
+
+
                                             <div class="col-sm-6">
                                                 <div class="zipWrap">
                                                     <img src="/static/images/measurements/img5.png" alt="">
@@ -1177,7 +1175,6 @@
                                         </div>
 
 
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -1204,9 +1201,50 @@
                     //Step Measurement submission
                     $('.step3-next').click(function (e) {
                         e.preventDefault();
+
+                                    
                         var qty = $("#id_session_quantity").val();
+                        var validforms = 0
                         for(var i = 1; i <= qty; i++) {
                             var $form = $("#id_form_measurement_"+i);
+
+                            $form.validate({
+                                rules: {
+                                fabricTypes: "required",
+                                tayloringType: "required",
+                                meters:"required",
+                                color: {
+                                    required: true,
+                                    minlength: 2
+                                },
+                                },
+                                // Specify validation error messages
+                                messages: {
+                                    fabricTypes: "Please enter amount to Pay",
+                                    tayloringType: "Please enter amount to Pay",
+                                    meters: "Please enter amount to Pay",
+                                    color: {
+                                        required: "Please provide color",
+                                        minlength: "Color should be valid"
+                                    },
+
+                                
+                                },
+                                // Make sure the form is submitted to the destination defined
+                                // in the "action" attribute of the form when valid
+                                submitHandler: function(form) {
+                                    form.submit();
+                                }
+                            });
+
+                            if($form.valid()){
+                                validforms = validforms + 1;
+                            }
+                        }
+                        for(var i = 1; i <= qty; i++) {
+                            var $form = $("#id_form_measurement_"+i);
+
+                            if (!(validforms == qty )) return false
                             $.ajax({
                                 type: "POST",
                                 enctype: 'multipart/form-data',
@@ -1216,12 +1254,12 @@
                                     console.log("SUCCESS : ", data);  
                                     $(".btn_next_step3").trigger("click");
 
-                                    $(".customer_id_summary").text(data['data']['customer']['id']);
+                                    $(".customer_id_summary").text(data['data']['customer']['user_id']);
                                     $(".customer_name_summary").text(data['data']['customer']['first_name']+" "+data['data']['customer']['last_name']);
                                     $(".customer_phone_summary").text(data['data']['customer']['phone_number']);
-                                    $(".fab_typ_summary").text(data['data']['fab_title']);
-                                    $(".tailr_styl_summary").text(data['data']['tailr_title']);
-                                    $(".totl_meters_summary").text(data['data']['order']['total_meters']);
+                                    $(".fab_typ_summary").append(data['data']['fab_title']+", ");
+                                    $(".tailr_styl_summary").append(data['data']['tailr_title']+", ");
+                                    $(".totl_meters_summary").append(data['data']['total_meters']+", ");
                                     $(".qty_summary").text(data['data']['order']['quantity']);
                                     $(".deliver_dt_summary").text(data['data']['order']['deliver_at']);
 
@@ -1268,7 +1306,8 @@
                                                 'Order Placed successfully!',
                                                 'Your order has been created..',
                                                 'success'
-                                                )
+                                                );
+                                                window.location.href = "/pending/orders/";
 
                                         },
                                         error: function (e) {

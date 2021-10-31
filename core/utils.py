@@ -1,5 +1,11 @@
 import re
+import uuid
+import random
+import string
+
 from django import template
+from datetime import datetime
+
 
 class FormFieldNode(template.Node):
     """"
@@ -14,3 +20,8 @@ class FormFieldNode(template.Node):
         if not hasattr(field, 'widget_type') and hasattr(field, 'field'):
             field.widget_type = re.sub(r'widget$|input$', '', field.field.widget.__class__.__name__.lower())
         return ''
+    
+def id_generator(size=8, chars=string.ascii_uppercase 
+                    + datetime.now().strftime('%Y%m%d%H%M%S') 
+                    + str(uuid.uuid4()).replace("-","")):
+    return "DD"+''.join(random.choice(chars) for _ in range(size))

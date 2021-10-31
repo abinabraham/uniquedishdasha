@@ -27,21 +27,21 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id','first_name',]
+        fields = ['id','first_name','user_id']
 
 class UserAllSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['id','first_name', 'last_name', 'email', \
-                'phone_number', "address"]
+                'phone_number', "address", "user_id"]
 
 class OrderBookSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderBook
-        fields = ["id","branch","total_meters","quantity","deliver_at",]
+        fields = ["id","branch","quantity","deliver_at","order_id",]
 
 class CompleteOrdersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Orders
         fields = ["id","total_amnt_to_pay","total_paid_amount","balance_amount","order_status",
-                    "payment_status"]
+                    "payment_status","order_id",]

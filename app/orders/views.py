@@ -8,7 +8,8 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import (Measurements, OrderBook, FabricType,
-                     TailoringStyle, Orders, PricingPlans )
+                     TailoringStyle, Orders, PricingPlans,
+                     PricingPlansFabricTyp )
 
 class OrderView(FormView):
     template_name = "orders/orders_1.html"
@@ -19,7 +20,6 @@ class OrderView(FormView):
         return render(request, self.template_name, context)
     
     def post(self, request, *args, **kwargs):
-        print("--------------->",request.POST.get('user_input', None))
         try:
             user_id = request.POST.get('user_input', None).split(", ")[1]
             user_id_frmttd = user_id.replace('(', '').replace(')', '')
@@ -61,11 +61,19 @@ def order_ajaxsubmission(request):
     else:
         return HttpResponseBadRequest('Invalid request')
 
-def get_price_per_unit(tailr_styl_obj):
+def get_price_per_unit(tailr_styl_obj,fab_obj,fab_status):
+    amount,fab_amount = 0,0
     amount = PricingPlans.objects.filter(
-                 tailr_styl = tailr_styl_obj,
-                  is_active=True)[0].amount
-    return amount
+                    tailr_styl = tailr_styl_obj,
+                    is_active=True)[0].amount
+    if not fab_status:
+        fab_amount = PricingPlansFabricTyp.objects.filter(
+                    fabr_typ = fab_obj,
+                    is_active=True)[0].amount
+    print("statussssssss",fab_status)
+    print("amount",fab_amount, amount)
+
+    return amount+fab_amount
 
 def get_balance_status_amount(total, paid_amnt):
     '''
@@ -75,12 +83,13 @@ def get_balance_status_amount(total, paid_amnt):
         OVERPAID = 'PS4', 'FULLY PAID'
 
     '''
-    balance = float(total) - float(paid_amnt)
+    balance = int(float(total)-float(paid_amnt))
+    status = 'PS1'
     if balance == 0:
         status = 'PS3'
     if balance > 0:
         status = 'PS2'
-    else:
+    if balance < 0:
         status = "PS4"
     return balance, status
 
@@ -95,10 +104,9 @@ def order_ajaxcreaion(request):
                                 title='Salhia'
                             )
             customer_obj = CustomUser.objects.get(
-                                id=request.POST.get('session_customer')
+                                user_id=request.POST.get('session_customer')
                             )
-            fab_obj = FabricType.objects.get(id = request.POST.get('fabricType'))
-            taistyle_obj = TailoringStyle.objects.get(id = request.POST.get('tayloringType'))
+            
             qty = int(request.POST.get('qty'))
             order_list = list()
             complete_order_obj = Orders(
@@ -108,11 +116,7 @@ def order_ajaxcreaion(request):
             for qt in range(qty):
                 data['branch'] = branch_obj
                 data['customer'] = customer_obj
-                data['is_customer_own_fabric'] = True if request.POST.get('flexRadioDefault')=='on' else False
-                data['fb_type'] = fab_obj
-                data['tailr_styl'] = taistyle_obj
-                data['color'] = request.POST.get('color')
-                data['total_meters'] = request.POST.get('meters')
+                data['is_customer_own_fabric'] = True if request.POST.get('flexRadioDefault')=='Yes' else False
                 data['quantity'] = request.POST.get('qty')
                 data['deliver_at'] = request.POST.get('ddate')
                 obj = OrderBook.objects.create(
@@ -120,15 +124,14 @@ def order_ajaxcreaion(request):
                     )            
                 order_obj = OrderBookSerializer(obj, context={'request': None}).data
                 order_list.append(order_obj)
-
-                price_unit = get_price_per_unit(taistyle_obj)
-                complete_order_obj.total_amnt_to_pay += price_unit
+                
                 complete_order_obj.orders.add(obj)
                 complete_order_obj.save()
             customer_obj = UserAllSerializer(customer_obj, context={'request': None}).data
             return JsonResponse({"success": "Succesfully order booked", 'data':{'data':order_list,'user':customer_obj,
                                  'branch_title':branch_obj.title, 'qty':qty, 'complete_order_id':complete_order_obj.pk}}, status=200)
         except Exception as error:
+            print("erorrrrrrrrrrrrr",error)
             return JsonResponse({"error": error}, status=400)
     else:
         return HttpResponseBadRequest('Invalid request')
@@ -150,8 +153,10 @@ def measurement_ajaxcreaion(request):
                                 title='Salhia'
                             )
             customer_obj = CustomUser.objects.get(
-                                id=request.POST.get('session_measure_user')
+                                user_id=request.POST.get('session_measure_user')
                             )
+            fab_obj = FabricType.objects.get(id = request.POST.get('fabricTypes'))
+            taistyle_obj = TailoringStyle.objects.get(id = request.POST.get('tayloringType'))
             data = dict()
             data['order'] = order_obj
             data['collar'] = request.POST.get('collar')
@@ -187,6 +192,12 @@ def measurement_ajaxcreaion(request):
             data['two_line'] = request.POST.get('two_line') 
             data['length'] = request.POST.get('length') 
 
+            data['color'] = request.POST.get('color')
+            data['total_meters'] = request.POST.get('meters')
+            data['fb_type'] = fab_obj
+            data['tailr_styl'] = taistyle_obj
+
+
             
             complete_order_obj = Orders.objects.get(
                         pk = request.POST.get('session_measure_complete_order')                        
@@ -194,17 +205,24 @@ def measurement_ajaxcreaion(request):
             obj = Measurements.objects.create(
                                 **data
                             )
+
+            is_customer_own_fabric = order_obj.is_customer_own_fabric
+            price_unit = get_price_per_unit(taistyle_obj,fab_obj,is_customer_own_fabric)
+            complete_order_obj.total_amnt_to_pay += price_unit
+
             complete_order_obj.measurements.add(obj)
             complete_order_obj.save()
             order_obje = OrderBookSerializer(order_obj, context={'request': None}).data
             customer_obj = UserAllSerializer(customer_obj, context={'request': None}).data
-            fab_title = order_obj.fb_type.title
-            tailr_title = order_obj.tailr_styl.title
+            fab_title = fab_obj.title
+            tailr_title = taistyle_obj.title
+            total_meters = obj.total_meters
 
             comp_ordr_obj = CompleteOrdersSerializer(complete_order_obj,context={'request': None}).data
             return JsonResponse({"success": "Succesfully measure noted", 'data':{'order':order_obje,
                                         'customer':customer_obj,'comp_ordr_obj':comp_ordr_obj,
-                                         'fab_title':fab_title,'tailr_title':tailr_title }}, status=200)
+                                         'fab_title':fab_title,'tailr_title':tailr_title,
+                                         'total_meters':total_meters }}, status=200)
         except Exception as error:
             return JsonResponse({"error": error}, status=400)
     else:

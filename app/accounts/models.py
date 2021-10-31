@@ -4,6 +4,8 @@
 # Accounts related models will adde here
 
 import uuid
+import random
+import string
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -11,6 +13,9 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 from django.utils import timezone
 from django_countries.fields import CountryField
+from datetime import datetime
+
+from core.utils import id_generator
 
 USER_TYPES = (
     (0, 'SuperAdmin'),
@@ -45,7 +50,7 @@ class CustomUser(AbstractUser):
     """
     help = "User Table"
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user_id = models.IntegerField(null=True, blank=True)
+    user_id = models.CharField("User ID",null=True, blank=True, max_length=100)
     role_name = models.PositiveSmallIntegerField(choices=USER_TYPES, default=1)
     country = CountryField(default="KW")
     phone_number = models.CharField("Phone Number",null=True, blank=True, max_length=100)
@@ -53,6 +58,7 @@ class CustomUser(AbstractUser):
     area = models.CharField("Area",null=True, blank=True, max_length=100)
     address = models.TextField("Address",null=True, blank=True)   
     notes = models.TextField("Notes",null=True, blank=True)    
+    balance = models.DecimalField("Wallet Balance", max_digits=5, decimal_places=2, default=0)
 
     
     is_verified = models.BooleanField(default=False)
@@ -74,3 +80,9 @@ class CustomUser(AbstractUser):
         ordering = ["-id"]
         verbose_name_plural = "User"
         verbose_name = "Users"
+    
+
+    
+    def save(self, *args, **kwargs):
+        self.user_id=str(id_generator())
+        super(CustomUser, self).save(*args, **kwargs)
