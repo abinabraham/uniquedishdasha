@@ -16,6 +16,9 @@
 <body>
     {% get_fbtype as fbtype %}
     {% get_tailoringstyle as tailstyle %}
+    {% get_colors as colors %}
+
+    
     {% include "common/header.html" %}
 
 
@@ -859,7 +862,12 @@
                                         <div class="col-md-6">
                                             <div class="inputWrap">
                                                 <label for="" class="form-label">Color *</label>
-                                                <input name="color" type="text" class="form-control" id="color" placeholder="Color">
+                                                <select name="color" id="colors_id" class="form-select">
+                                                    <option value="">Select Color</option>
+                                                    {% for item in colors %}
+                                                    <option value="{{ item.pk }}">{{ item.name }}</option>
+                                                    {% endfor %}
+                                                </select>
 
                                             </div>
                                         </div>
@@ -1214,8 +1222,7 @@
                                 tayloringType: "required",
                                 meters:"required",
                                 color: {
-                                    required: true,
-                                    minlength: 2
+                                    required: true
                                 },
                                 },
                                 // Specify validation error messages
@@ -1224,8 +1231,7 @@
                                     tayloringType: "Please enter amount to Pay",
                                     meters: "Please enter amount to Pay",
                                     color: {
-                                        required: "Please provide color",
-                                        minlength: "Color should be valid"
+                                        required: "Please provide color"
                                     },
 
                                 
@@ -1307,7 +1313,7 @@
                                                 'Your order has been created..',
                                                 'success'
                                                 );
-                                                window.location.href = "/pending/orders/";
+                                                window.location.href = "/print/"+data['data']['order_id'];
 
                                         },
                                         error: function (e) {

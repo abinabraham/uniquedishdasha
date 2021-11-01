@@ -75,8 +75,11 @@
                                     <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
-                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id exist_order.order_id %}" class="btn btn-outline-primary" download>
-                                        <i class="fas fa-download"></i> INVOICE
+                                   <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn btn-outline-primary" download>
+                                        <i class="fas fa-download"></i> DOWNLOAD
+                                    </a>
+                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
+                                        <i class="fas fa-download"></i> PRINT 
                                     </a>
                                 </div> 
                             </div>
@@ -218,8 +221,11 @@
                                     <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
-                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id exist_order.order_id %}" class="btn btn-outline-primary" download>
-                                        <i class="fas fa-download"></i> INVOICE
+                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn btn-outline-primary" download>
+                                        <i class="fas fa-download"></i> DOWNLOAD
+                                    </a>
+                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
+                                        <i class="fas fa-download"></i> PRINT 
                                     </a>
                                 </div> 
                             </div>
@@ -363,8 +369,11 @@
                                     <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
-                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id "invoice" %}" class="btn btn-outline-primary" download>
-                                        <i class="fas fa-download"></i> INVOICE
+                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn btn-outline-primary" download>
+                                        <i class="fas fa-download"></i> DOWNLOAD
+                                    </a>
+                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
+                                        <i class="fas fa-download"></i> PRINT 
                                     </a>
                                 </div> 
                             </div>

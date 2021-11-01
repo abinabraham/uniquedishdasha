@@ -5,6 +5,7 @@ from django.template.base import TextNode
 from core.utils import FormFieldNode
 from app.orders.models import (FabricType, 
                             TailoringStyle)
+from app.dashboard.models import Colors
 
 register = template.Library()
 
@@ -33,3 +34,7 @@ def get_fbtype():
 @register.simple_tag
 def get_tailoringstyle():
     return TailoringStyle.objects.filter(is_active=True)
+
+@register.simple_tag
+def get_colors():
+    return Colors.objects.all()

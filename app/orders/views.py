@@ -245,7 +245,7 @@ def complete_order_creation(request):
             complete_order_obj.payment_status = status
 
             complete_order_obj.save()
-            return JsonResponse({"success": "Succesfully created order", 'data':{}}, status=200)
+            return JsonResponse({"success": "Succesfully created order", 'data':{"order_id":complete_order_obj.pk}}, status=200)
         except Exception as error:
             return JsonResponse({"error": error}, status=400)
     else:

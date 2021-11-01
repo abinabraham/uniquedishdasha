@@ -4,7 +4,12 @@
             <div class="card">
                 <div class="card-header">Invoice
                     <strong>#{{node.order_id}}</strong>
-                    
+                    <div style="float:right">
+                        <button onClick="window.print()" id="id_print">Print Invoice</button>
+                    </div>
+                    <div style="float:right">
+                        <a href="/">Home</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="row mb-4">
@@ -97,3 +102,10 @@
     border-bottom: 1px solid #c8ced3
 }
 </style>
+<script src="/static/js/all.js"></script>
+
+<script>
+ $(document).ready(function () {
+     $("#id_print").trigger('click');
+ });
+ </script>

@@ -39,8 +39,11 @@
                                     <h5 class="mb-2">Order ID - {{ orders.order.order_id }}</h5>
                                 {% endfor %}
                                  <div class="editButton">
-                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id "invoice" %}" class="btn btn-outline-primary" download>
-                                        <i class="fas fa-download"></i> INVOICE
+                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn btn-outline-primary" download>
+                                        <i class="fas fa-download"></i> DOWNLOAD
+                                    </a>
+                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
+                                        <i class="fas fa-download"></i> PRINT 
                                     </a>
                                 </div> 
                             </div>

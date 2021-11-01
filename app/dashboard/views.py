@@ -164,10 +164,17 @@ class PendingOrdersView(FormView):
         )
         context['existing_orders'] = existing_orders
         return render(request, self.template_name, context)
-
+from app.orders.models import Orders
+from django.shortcuts import get_object_or_404
 
 # pdf
 def generatePdf(request,cid,value):
     print(cid,value)
     pdf = render_to_pdf('orders/pdf/invoice.html',cid)
     return HttpResponse(pdf, content_type='application/pdf')
+
+def generatePrint(request,cid):
+    print(cid)
+    node = get_object_or_404(Orders, id =cid)
+    context = {'node':node}
+    return render(request, 'orders/pdf/invoice.html', context)
