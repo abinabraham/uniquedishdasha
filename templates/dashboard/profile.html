@@ -81,6 +81,9 @@
                                     <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
                                         <i class="fas fa-print"></i> PRINT 
                                     </a>
+                                    <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn btn-outline-primary">
+                                        <i class="fas fa-print"></i> ADD ORDER 
+                                    </a>
                                 </div> 
                             </div>
                             <div class="d-flex w-100 justify-content-between mb-2">
@@ -226,6 +229,9 @@
                                     </a>
                                     <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
                                         <i class="fas fa-print"></i> PRINT 
+                                    </a>
+                                    <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn btn-outline-primary">
+                                        <i class="fas fa-print"></i> ADD ORDER 
                                     </a>
                                 </div> 
                             </div>
@@ -374,6 +380,9 @@
                                     </a>
                                     <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
                                         <i class="fas fa-print"></i> PRINT 
+                                    </a>
+                                    <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn btn-outline-primary">
+                                        <i class="fas fa-print"></i> ADD ORDER 
                                     </a>
                                 </div> 
                             </div>

@@ -11,6 +11,7 @@
         label.error{
             color:red !important;
         }
+         @media print{ #measurementSection{ height:100%;overflow:visible;}.actionPlate{display:none;} } 
     </style>
 </head>
 <body>
@@ -99,7 +100,7 @@
                                 </div>
                             {% else %}
                                 <h2>Search Existing Customer</h2>
-                                <form action="{% url 'orders:order_submission' %}"
+                                <form action="{% url 'orders:order_submission'  00 %}"
                                     class="user_input_form" method="post">{% csrf_token %}                            
                                         <input id="inputOrigin" class="form-control form-control-lg" type="text" 
                                             placeholder="Search - Customer, Order"
@@ -291,7 +292,7 @@
                                     </div>
                                     <div class="col-3">
                                         <span>
-                                            {{ country.code }} - {{ customer.phone_number }}
+                                            <img src="{{ customer.country.flag }}">  - {{ customer.phone_number }}
                                         </span>
                                     </div>
                                     <div class="col-4">
@@ -334,7 +335,7 @@
                             <div class="formWrap">
                                 <form action="" class="form_primary_step2" method="post"
                                         id="id_form_primary_step2">{% csrf_token %}
-                                    <input name="session_customer" type="hidden" class="form-control" id="id_session_customer">
+                                    <input name="session_customer" type="hidden" class="form-control" id="id_session_customer" value={{customer.user_id}}>
                                     
                                     <div class="row">
                                         <div class="col-md-6">
@@ -395,6 +396,7 @@
                     </div>
                     <div class="tab-pane fade" id="measurementSection" role="tabpanel" aria-labelledby="">
                         <input name="session_quantity" type="hidden" class="form-control" id="id_session_quantity">
+                        <button onClick="window.print()" class="btn btn-outline-primary"><i class="fas fa-print"></i> Print </button>
                         
                         
                         <div class="actionPlate step3">
@@ -642,7 +644,7 @@
             $(".btn_next_step1").trigger("click");
             $(".step2-tab .user_id_spn").text(ui.item.user_id);
             $(".step2-tab .user_name_spn").text(ui.item.first_name+" "+ui.item.last_name);
-            $(".step2-tab .user_phone_spn").text(ui.item.phone);
+            $(".step2-tab .user_phone_spn").html('<img src="/static/flags/kw.gif"> - '+ui.item.phone);
             $(".step2-tab .user_email_spn").text(ui.item.email);
             $("#fname").val(ui.item.first_name);
             $("#lname").val(ui.item.last_name);
@@ -902,10 +904,10 @@
                                                 <div class="zipWrap">
                                                     <img src="/static/images/measurements/img5.png" alt="">
                                                     <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip1" value="Z1" checked="">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip2" value="Z2">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip3" value="Z3">
-                                                        <input class="form-check-input" type="radio" name="zip" id="zip4" value="Z4">
+                                                        <input class="form-check-input" type="radio" name="collar" id="zip1" value="Z1" checked="">
+                                                        <input class="form-check-input" type="radio" name="collar" id="zip2" value="Z2">
+                                                        <input class="form-check-input" type="radio" name="collar" id="zip3" value="Z3">
+                                                        <input class="form-check-input" type="radio" name="collar" id="zip4" value="Z4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -915,10 +917,10 @@
                                                     <div class="mb-1"></div>
                                                     <img src="/static/images/measurements/img6.png" alt="">
                                                     <div class="inputGroup">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket1" value="P1" checked="">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket2" value="P2">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket3" value="P3">
-                                                        <input class="form-check-input" type="radio" name="pocket" id="pocket4" value="P4">
+                                                        <input class="form-check-input" type="radio" name="collar" id="pocket1" value="P1" checked="">
+                                                        <input class="form-check-input" type="radio" name="collar" id="pocket2" value="P2">
+                                                        <input class="form-check-input" type="radio" name="collar" id="pocket3" value="P3">
+                                                        <input class="form-check-input" type="radio" name="collar" id="pocket4" value="P4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -975,7 +977,7 @@
                                             <div class="col-sm-6">
                                                 <div class="sizeMap">
                                                     <div class="sholderOne">
-                                                        <select name="sholderOne" id="sholderOne`+i+`">
+                                                        <select name="sholderOne">
                                                             <option value="1.00">1.00</option>
                                                             <option value="1.2">1.25</option>
                                                             <option value="1.50">1.50</option>
@@ -984,7 +986,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="sholderTwo">
-                                                        <select name="sholderTwo" id="sholderTwo`+i+`">
+                                                        <select name="sholderTwo">
                                                             <option value="1.00">1.00</option>
                                                             <option value="1.2">1.25</option>
                                                             <option value="1.50">1.50</option>
@@ -994,7 +996,7 @@
                                                     </div>
 
                                                     <div class="mainWidth">
-                                                        <select name="mainWidth" id="mainWidth`+i+`">
+                                                        <select name="mainWidth" >
                                                             <option value="1.00">1.00</option>
                                                             <option value="1.2">1.25</option>
                                                             <option value="1.50">1.50</option>
@@ -1004,7 +1006,7 @@
                                                     </div>
 
                                                     <div class="penPocket">
-                                                        <select name="penPocket" id="penPocket`+i+`">
+                                                        <select name="penPocket">
                                                             <option value="1.00">1.00</option>
                                                             <option value="1.2">1.25</option>
                                                             <option value="1.50">1.50</option>
@@ -1013,7 +1015,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="insidePocket">
-                                                        <select name="insidePocket" id="insidePocket`+i+`">
+                                                        <select name="insidePocket">
                                                             <option value="1.00">1.00</option>
                                                             <option value="1.2">1.25</option>
                                                             <option value="1.50">1.50</option>
@@ -1022,7 +1024,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="handSize">
-                                                        <select name="handSize" id="handSize`+i+`">
+                                                        <select name="handSize">
                                                             <option value="1.00">1.00</option>
                                                             <option value="1.2">1.25</option>
                                                             <option value="1.50">1.50</option>

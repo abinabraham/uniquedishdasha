@@ -210,11 +210,13 @@ class Measurements(models.Model):
                         max_length=2,
                         choices=Zips.choices,
                         default=Zips.ZIP1,
+                        null=True, blank=True,
                     )
     pocket = models.CharField(
                         max_length=2,
                         choices=Pockets.choices,
                         default=Pockets.POCKET1,
+                        null=True, blank=True,
                     )
     pockettwo = models.CharField(
                         max_length=5,

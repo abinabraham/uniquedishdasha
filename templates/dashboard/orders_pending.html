@@ -39,11 +39,17 @@
                                     <h5 class="mb-2">Order ID - {{ orders.order.order_id }}</h5>
                                 {% endfor %}
                                  <div class="editButton">
+                                    <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
                                     <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn btn-outline-primary" download>
                                         <i class="fas fa-download"></i> DOWNLOAD
                                     </a>
                                     <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
                                         <i class="fas fa-print"></i> PRINT 
+                                    </a>
+                                     <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn btn-outline-primary">
+                                        <i class="fas fa-print"></i> ADD ORDER 
                                     </a>
                                 </div> 
                             </div>
@@ -121,6 +127,55 @@
                             </ul>
                         </div>
                     </div>
+
+                    <!-- Modal -->
+       
+                    <div class="modal fade" id="exampleModal_{{exist_order.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Order Status </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="{% url 'dashboard:customer_profile' %}" method="post">{% csrf_token %}
+                                <div class="modal-body">
+                                    <div class="formWrap">
+                                     <input type="hidden" value="{{exist_order.pk}}" name="order_id" >
+                                            <input type="hidden"  name="user_input" value="{{ exist_order.customer.user_id }}">
+
+                                            <div class="row">
+                                            
+                                                {% if not exist_order.balance_amount == 0 %}
+                                                <div class="col-6">
+                                                    <div class="inputWrap">
+                                                        <label for="" class="form-label">Pay balance</label>
+                                                        <input type="number" class="form-control" id="id_balance_pay" placeholder="" name="balance_pay"
+                                                        value="{{exist_order.balance_amount}}">
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                <div class="col-6">
+                                                    <div class="inputWrap">
+                                                        <label for="" class="form-label">Order Status</label>
+                                                        <select name="order_status" id="placeList" class="form-select">
+                                                            <option value="OS1" {% if exist_order.order_status == "OS1" %}selected{% endif %}>Ordered</option>
+                                                            <option value="OS2" {% if exist_order.order_status == "OS2" %}selected{% endif %}>Completed</option>
+                                                            <option value="OS3" {% if exist_order.order_status == "OS3" %}selected{% endif %}>Delivered</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
                     {% endfor %}
 
                     {% else %}
@@ -131,6 +186,8 @@
                     </div>
                     
                     {% endif %}
+
+
 
                    
 

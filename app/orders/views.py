@@ -16,15 +16,22 @@ class OrderView(FormView):
 
     def get(self, request, *args, **kwargs):
         """Handle GET requests: instantiate a blank version of the form."""
-        context = {'redir':""}
+        try:
+            user_id = user_id=kwargs.get('uid', None)
+            customer = CustomUser.objects.get(
+                    pk = user_id
+            )
+        except Exception as e:
+            print(e)
+            customer =  None
+        context = {'customer':customer}
         return render(request, self.template_name, context)
     
     def post(self, request, *args, **kwargs):
         try:
-            user_id = request.POST.get('user_input', None).split(", ")[1]
-            user_id_frmttd = user_id.replace('(', '').replace(')', '')
+            user_id = request.POST.get('user_input', None)
             customer = CustomUser.objects.get(
-                    pk = int(user_id_frmttd)
+                    pk = int(user_id)
             )
         except:
             customer =  None
@@ -224,6 +231,7 @@ def measurement_ajaxcreaion(request):
                                          'fab_title':fab_title,'tailr_title':tailr_title,
                                          'total_meters':total_meters }}, status=200)
         except Exception as error:
+            print("exception ===========>",error)
             return JsonResponse({"error": error}, status=400)
     else:
         return HttpResponseBadRequest('Invalid request')

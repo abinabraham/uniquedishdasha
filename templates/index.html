@@ -26,7 +26,7 @@
                                         placeholder="Search - Customer, Order"
                                         name="user_input" aria-label=".form-control-lg example">
                             </form>
-                            <form action="{% url 'orders:order_submission' %}"
+                            <form action="{% url 'orders:order_submission' 00 %}"
                                 class="order_input_form" method="post">{% csrf_token %}                            
                                     <input id="inputOrigin" class="form-control form-control-lg" type="hidden" 
                                         placeholder="Search - Customer, Order"
