@@ -73,13 +73,19 @@ def order_ajaxsubmission(request):
 
 def get_price_per_unit(tailr_styl_obj,fab_obj,fab_status):
     amount,fab_amount = 0,0
-    amount = PricingPlans.objects.filter(
-                    tailr_styl = tailr_styl_obj,
-                    is_active=True)[0].amount
+    try:
+        amount = PricingPlans.objects.filter(
+                        tailr_styl = tailr_styl_obj,
+                        is_active=True)[0].amount
+    except:
+        amount = 0
     if not fab_status:
-        fab_amount = PricingPlansFabricTyp.objects.filter(
+        try:
+            fab_amount = PricingPlansFabricTyp.objects.filter(
                     fabr_typ = fab_obj,
                     is_active=True)[0].amount
+        except:
+            fab_amount = 0
     print("statussssssss",fab_status)
     print("amount",fab_amount, amount)
 
