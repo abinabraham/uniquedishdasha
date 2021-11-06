@@ -784,12 +784,14 @@
 
                     // check if the input is valid using a 'valid' property
                     if (!$form.valid()) return false;
-
+                    var branch = $("#storeSelector").val();
+                    var formData = $("#id_form_primary_step2").serializeArray();
+                    formData.push({name: 'branch', value: branch});
                     $.ajax({
                             type: "POST",
                             enctype: 'multipart/form-data',
                             url: "/orders/ajax/orderbook/crud/",
-                            data: $("#id_form_primary_step2").serialize(),
+                            data: formData,
                             success: function (data) {
                                 console.log("SUCCESS : ", data);
                                 $(".btn_next_step2").trigger("click");

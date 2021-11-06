@@ -49,9 +49,9 @@
                         <div class="card-body">
                             <div class="dateTime row">
                                 <span>{{ today }}</span>
-                                <span>{{ node.orders.all.0.branch.title }}</span>
-                                {% if node.orders.all.0.branch.address %}
-                                    <span>{{ node.orders.all.0.branch.address }}</span>
+                                <span>{{ node.branch.title }}</span>
+                                {% if node.branch.address %}
+                                    <span>{{ node.branch.address }}</span>
                                 {% endif %}
                             </div>
                             <div class="mb-3"></div>
@@ -82,6 +82,8 @@
                                                 </div>
                                                 <div class="col-6 text-right">
                                                     <span>1 X {{ measurement.measure_id }}</span>
+                                                    <span>Fabric Type - {{ measurement.fb_type.title }} </span>
+                                                    <span>Tailoring Style - {{ measurement.tailr_styl.title }} </span>
                                                     <small>Color - {{ measurement.get_collar_display }}</small>
                                                     <small>Length - {{ measurement.total_meters }} meters</small>
 

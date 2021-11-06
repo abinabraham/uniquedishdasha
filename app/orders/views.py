@@ -116,9 +116,13 @@ def order_ajaxcreaion(request):
     if is_ajax:
         try:
             data = dict()
-            branch_obj, created = Branch.objects.get_or_create(
-                                title='Salhia'
-                            )
+            branches_selection =  request.POST.get('branch', None)
+            try:
+                branch_obj,created  = Branch.objects.get_or_create(
+                        pk = int(branches_selection)
+                )
+            except:
+                branch_obj = Branch.objects.all()[0]
             customer_obj = CustomUser.objects.get(
                                 user_id=request.POST.get('session_customer')
                             )
@@ -146,8 +150,6 @@ def order_ajaxcreaion(request):
                 print("============e",e)
                 latest_measure = None
             latest_measure_obj = MeasurementsSerializer(latest_measure).data
-
-            print("latest_measure_obj=====================",latest_measure_obj)
             comp_ordr_obj = CompleteOrdersSerializer(complete_order_obj,context={'request': None}).data
 
             customer_obj = UserAllSerializer(customer_obj, context={'request': None}).data
