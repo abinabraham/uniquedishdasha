@@ -195,23 +195,7 @@
     </style>
     <script src="/static/js/all.js"></script>
 
-    <script>
-        function printPage(){
-                alert("")  ;
-                var printHtml = window.open('', 'PRINT', 'height=400,width=600');
-            
-                printHtml.document.write('<html><head>');
-                printHtml.document.write(document.getElementById("printableId").innerHTML);
-                printHtml.document.write('</body></html>');
-            
-                printHtml.document.close(); 
-                printHtml.focus() = 10*10;
-                printHtml.print();
-                printHtml.close();
-            
-                return true;
-            
-        }      
+    <script>   
         
         $(document).ready(function () {
             $("#id_print").trigger('click'); 
