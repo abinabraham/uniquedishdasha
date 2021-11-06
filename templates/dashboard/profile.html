@@ -68,23 +68,7 @@
                     <div class="list-group">
                         <div class="list-group-inwrap">
                             <div class="d-flex w-100 justify-content-between mb-2">
-                                {% for orders in exist_order.measurements.all %}
-                                    <h5 class="mb-2">Order ID - {{ orders.order.order_id }}</h5>
-                                {% endfor %}
-                                <div class="editButton">
-                                    <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
-                                        <i class="fas fa-edit"></i> Edit
-                                    </button>
-                                   <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn btn-outline-primary" download>
-                                        <i class="fas fa-download"></i> DOWNLOAD
-                                    </a>
-                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
-                                        <i class="fas fa-print"></i> PRINT 
-                                    </a>
-                                    <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn btn-outline-primary">
-                                        <i class="fas fa-print"></i> ADD ORDER 
-                                    </a>
-                                </div> 
+                                    <h5 class="mb-2">Order ID - {{ exist_order.order_id }}</h5>
                             </div>
                             <div class="d-flex w-100 justify-content-between mb-2">
                                 <h6 class=""><i class="fas fa-calendar-alt"></i> <small>Delivery Date -</small> {{ exist_order.measurements.all.0.order.deliver_at }}</h6>
@@ -95,15 +79,22 @@
                             </div>
                             
                             <hr>
+                            {% for orders in exist_order.measurements.all %}
                             <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>#</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                            <span>{{ orders.measure_id }} </span>
+                                    </div>
+                                </li>
                                 <li class="list-group-item">
                                     <div class="labelDiv">
                                         <span>Fabric Type</span>
                                     </div>
                                     <div class="dataDiv">
-                                        {% for orders in exist_order.measurements.all %}
-                                            <span>{{ orders.fb_type }}, </span>
-                                        {% endfor %}
+                                            <span>{{ orders.fb_type }} </span>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
@@ -111,9 +102,7 @@
                                         <span>Tayloring Style</span>
                                     </div>
                                     <div class="dataDiv">
-                                        {% for orders in exist_order.measurements.all %}
-                                            <span>{{ orders.tailr_styl }}, </span>
-                                        {% endfor %}
+                                            <span>{{ orders.tailr_styl }} </span>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
@@ -121,13 +110,19 @@
                                         <span>Color</span>
                                     </div>
                                     <div class="dataDiv">
-                                        {% for orders in exist_order.measurements.all %}
-                                            <span>{{ orders.color }}, </span>
-                                        {% endfor %}
+                                            <span>{{ orders.color }} </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>Price</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                            <span>{{ orders.price }} </span>
                                     </div>
                                 </li>
                             </ul>
-
+                            {% endfor %}
                             <ul class="list-group list-group-horizontal">
                                 <li class="list-group-item">
                                     <div class="labelDiv">
@@ -154,6 +149,29 @@
                                     </div>
                                 </li>
                             </ul>
+
+                             <div class="mb-3"></div>
+                            <div class="editButtonGroup">
+                                <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button  class="btn btn-outline-primary">
+                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </button>
+                                <button  class="btn btn-outline-primary">
+                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn">
+                                        <i class="fas fa-print"></i> Print 
+                                    </a>
+                                </button>
+                                <button  class="btn btn-outline-primary">    
+                                    <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn">
+                                        <i class="fas fa-plus"></i> Add Order
+                                    </a>
+                                </button>
+                              
+                            </div> 
                         </div>
                     </div>
 
@@ -217,23 +235,7 @@
                     <div class="list-group">
                         <div class="list-group-inwrap">
                             <div class="d-flex w-100 justify-content-between mb-2">
-                                {% for orders in exist_order.measurements.all %}
-                                    <h5 class="mb-2">Order ID - {{ orders.order.order_id }}</h5>
-                                {% endfor %}
-                                <div class="editButton">
-                                    <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
-                                        <i class="fas fa-edit"></i> Edit
-                                    </button>
-                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn btn-outline-primary" download>
-                                        <i class="fas fa-download"></i> DOWNLOAD
-                                    </a>
-                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
-                                        <i class="fas fa-print"></i> PRINT 
-                                    </a>
-                                    <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn btn-outline-primary">
-                                        <i class="fas fa-print"></i> ADD ORDER 
-                                    </a>
-                                </div> 
+                                    <h5 class="mb-2">Order ID - {{exist_order.order_id }}</h5>
                             </div>
                             <div class="d-flex w-100 justify-content-between mb-2">
                                 <h6 class=""><i class="fas fa-calendar-alt"></i> <small>Delivery Date -</small> {{ exist_order.measurements.all.0.order.deliver_at }}</h6>
@@ -244,15 +246,22 @@
                             </div>
                             
                             <hr>
+                            {% for orders in exist_order.measurements.all %}
                             <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>#</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                            <span>{{ orders.measure_id }} </span>
+                                    </div>
+                                </li>
                                 <li class="list-group-item">
                                     <div class="labelDiv">
                                         <span>Fabric Type</span>
                                     </div>
                                     <div class="dataDiv">
-                                        {% for orders in exist_order.measurements.all %}
-                                            <span>{{ orders.fb_type }}, </span>
-                                        {% endfor %}
+                                            <span>{{ orders.fb_type }} </span>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
@@ -260,9 +269,7 @@
                                         <span>Tayloring Style</span>
                                     </div>
                                     <div class="dataDiv">
-                                        {% for orders in exist_order.measurements.all %}
-                                            <span>{{ orders.tailr_styl }}, </span>
-                                        {% endfor %}
+                                            <span>{{ orders.tailr_styl }} </span>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
@@ -270,13 +277,19 @@
                                         <span>Color</span>
                                     </div>
                                     <div class="dataDiv">
-                                        {% for orders in exist_order.measurements.all %}
-                                            <span>{{ orders.color }}, </span>
-                                        {% endfor %}
+                                            <span>{{ orders.color }} </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>Price</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                            <span>{{ orders.price }} </span>
                                     </div>
                                 </li>
                             </ul>
-
+                            {% endfor %}
                             <ul class="list-group list-group-horizontal">
                                 <li class="list-group-item">
                                     <div class="labelDiv">
@@ -303,6 +316,30 @@
                                     </div>
                                 </li>
                             </ul>
+
+                             <div class="mb-3"></div>
+                            <div class="editButtonGroup">
+                                <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button  class="btn btn-outline-primary">
+                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </button>
+                                <button  class="btn btn-outline-primary">
+                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn">
+                                        <i class="fas fa-print"></i> Print 
+                                    </a>
+                                </button>
+                                <button  class="btn btn-outline-primary">    
+                                    <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn">
+                                        <i class="fas fa-plus"></i> Add Order
+                                    </a>
+                                </button>
+                              
+                            </div> 
+
                         </div>
                     </div>
 
@@ -368,23 +405,9 @@
                     <div class="list-group">
                         <div class="list-group-inwrap">
                             <div class="d-flex w-100 justify-content-between mb-2">
-                                {% for orders in exist_order.measurements.all %}
-                                    <h5 class="mb-2">Order ID - {{ orders.order.order_id }}</h5>
-                                {% endfor %}
-                                <div class="editButton">
-                                    <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
-                                        <i class="fas fa-edit"></i> Edit
-                                    </button>
-                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn btn-outline-primary" download>
-                                        <i class="fas fa-download"></i> DOWNLOAD
-                                    </a>
-                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn btn-outline-primary">
-                                        <i class="fas fa-print"></i> PRINT 
-                                    </a>
-                                    <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn btn-outline-primary">
-                                        <i class="fas fa-print"></i> ADD ORDER 
-                                    </a>
-                                </div> 
+                                  <h5 class="mb-2">Order ID - {{exist_order.order_id }}</h5>
+
+                                
                             </div>
                             <div class="d-flex w-100 justify-content-between mb-2">
                                 <h6 class=""><i class="fas fa-calendar-alt"></i> <small>Delivery Date -</small> {{ exist_order.measurements.all.0.order.deliver_at }}</h6>
@@ -395,15 +418,22 @@
                             </div>
                             
                             <hr>
+                            {% for orders in exist_order.measurements.all %}
                             <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>#</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                            <span>{{ orders.measure_id }} </span>
+                                    </div>
+                                </li>
                                 <li class="list-group-item">
                                     <div class="labelDiv">
                                         <span>Fabric Type</span>
                                     </div>
                                     <div class="dataDiv">
-                                        {% for orders in exist_order.measurements.all %}
-                                            <span>{{ orders.fb_type }}, </span>
-                                        {% endfor %}
+                                            <span>{{ orders.fb_type }} </span>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
@@ -411,9 +441,7 @@
                                         <span>Tayloring Style</span>
                                     </div>
                                     <div class="dataDiv">
-                                        {% for orders in exist_order.measurements.all %}
-                                            <span>{{ orders.tailr_styl }}, </span>
-                                        {% endfor %}
+                                            <span>{{ orders.tailr_styl }} </span>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
@@ -421,13 +449,19 @@
                                         <span>Color</span>
                                     </div>
                                     <div class="dataDiv">
-                                        {% for orders in exist_order.measurements.all %}
-                                            <span>{{ orders.color }}, </span>
-                                        {% endfor %}
+                                            <span>{{ orders.color }} </span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="labelDiv">
+                                        <span>Price</span>
+                                    </div>
+                                    <div class="dataDiv">
+                                            <span>{{ orders.price }} </span>
                                     </div>
                                 </li>
                             </ul>
-
+                            {% endfor %}
                             <ul class="list-group list-group-horizontal">
                                 <li class="list-group-item">
                                     <div class="labelDiv">
@@ -454,6 +488,28 @@
                                     </div>
                                 </li>
                             </ul>
+                             <div class="mb-3"></div>
+                            <div class="editButtonGroup">
+                                <button type="button" class="btn btn-outline-primary" id="" data-bs-toggle="modal" data-bs-target="#exampleModal_{{exist_order.pk}}"> 
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button  class="btn btn-outline-primary">
+                                    <a href="{% url 'dashboard:invoice_pdf' exist_order.order_id  exist_order.order_id %}" class="btn" download>
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </button>
+                                <button  class="btn btn-outline-primary">
+                                    <a href="{% url 'dashboard:print_generate' exist_order.id %}" class="btn">
+                                        <i class="fas fa-print"></i> Print 
+                                    </a>
+                                </button>
+                                <button  class="btn btn-outline-primary">    
+                                    <a href="{% url 'orders:order_submission' exist_order.customer.id %}" class="btn">
+                                        <i class="fas fa-plus"></i> Add Order
+                                    </a>
+                                </button>
+                              
+                            </div> 
                         </div>
                     </div>
 

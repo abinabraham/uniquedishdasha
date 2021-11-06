@@ -12,11 +12,12 @@ from xhtml2pdf import pisa
 from app.orders.models import Orders
 from django.shortcuts import get_object_or_404
 
+import datetime
 
 def render_to_pdf(template_src,cid, context_dict={}):
     template = get_template(template_src)
     node = get_object_or_404(Orders, order_id =cid)
-    context = {'node':node}
+    context = {'node':node, 'today':datetime.date.today()}
     context_dict=context
     html  = template.render(context_dict)
     result = BytesIO()

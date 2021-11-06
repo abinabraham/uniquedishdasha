@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, FormView
 from django.http import HttpResponse
@@ -8,6 +9,9 @@ from app.api.serializers import UserSerializer, UserAllSerializer
 from .utils import render_to_pdf
 
 import json
+
+from app.orders.models import Orders
+from django.shortcuts import get_object_or_404
 
 from app.orders.models import Orders
 from app.orders.views import get_balance_status_amount
@@ -120,6 +124,10 @@ class ProfileView(FormView):
                 complete_order_obj.payment_status = status
                 complete_order_obj.save()
             complete_order_obj.order_status = request.POST.get('order_status')
+            if request.POST.get('order_status') == 'OS3':
+                complete_order_obj.delivered_date = datetime.datetime.now()
+                complete_order_obj.is_active = False
+
             complete_order_obj.save()
             return redirect("/profile/"+customer_obj.user_id)
         return render(request, self.template_name, context)
@@ -164,17 +172,15 @@ class PendingOrdersView(FormView):
         )
         context['existing_orders'] = existing_orders
         return render(request, self.template_name, context)
-from app.orders.models import Orders
-from django.shortcuts import get_object_or_404
 
 # pdf
 def generatePdf(request,cid,value):
     print(cid,value)
-    pdf = render_to_pdf('orders/pdf/invoice.html',cid)
+    pdf = render_to_pdf('orders/pdf/print.html',cid)
     return HttpResponse(pdf, content_type='application/pdf')
 
 def generatePrint(request,cid):
     print(cid)
     node = get_object_or_404(Orders, id =cid)
-    context = {'node':node}
+    context = {'node':node, 'today':datetime.datetime.now()}
     return render(request, 'orders/pdf/invoice.html', context)
