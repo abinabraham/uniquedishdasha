@@ -77,8 +77,10 @@ img{
 
 .list-group{
     width: 100%;
+    background: #fdfdfd;
     .list-group-inwrap{
         border: 1px solid #d8d8d8;
+        border-radius: 5px;
         padding: 15px;
         margin-bottom: 15px;
         font-size: 14px;
@@ -147,4 +149,87 @@ img{
 
 .orderFlow.overFlowScroll{
     overflow: scroll;
+}
+
+.editButtonGroup{
+    display: flex;
+    flex-grow: 1;
+    button{
+        width: calc(25% - 7px);
+        margin: 0 7px;
+        padding: 0;
+        background: #dbdbdb;
+        color: black;
+        border-color: black;
+        font-size: 14px;
+        font-weight: 700;
+        &:first-child{
+            margin-left: 0;
+        }
+        &:last-child{
+            margin-right: 0;
+        }
+        a{
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+        }
+        &:hover{
+            color: white;
+            background: black;
+            border-color: black;
+            a{
+                background: none;
+                border: none;
+                color: white;
+            }
+        }
+    }
+}
+
+.printWrap{
+    max-width: 300px;
+    margin: auto;
+    font-size: 12px;
+    .printHeader{
+        text-align: center;
+        img{
+            max-width:60px;
+        }
+    }
+    .printSubtitle{
+        font-size: 14px;
+        font-weight: 700;
+        text-align: center;;
+    }
+    .fromCust{
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .text-right{
+        span,small{
+            display: inline-block;
+            text-align: right;
+            width: 100%;
+        }
+    }
+}
+
+.purchaseItems{
+    .order{
+        margin-bottom: 10px;
+    }
+}
+
+.printBtnPrintPage{
+    margin-top: 11px;
+    border: 1px solid black;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 3px;
+    color: white;
+    background: #242424;
+    &:hover{
+        background: black;
+    }
 }

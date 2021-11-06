@@ -1,113 +1,216 @@
-<div class="container-fluid">
-    <div id="ui-view" data-select2-id="ui-view">
-        <div>
-            <div class="card">
-                <div class="card-header">Invoice
-                    <strong>#{{node.order_id}}</strong>
-                    <div style="float:right">
-                        <button onClick="window.print()" id="id_print">Print Invoice</button>
-                    </div>
-                    <div style="float:right">
-                        <a href="/">Home</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dishdasha - Print Invoice</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <div class="fakeHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="backButton">
+                        <a href="/"><i class="fas fa-arrow-left"></i> Back</a>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row mb-4">
-                        <div class="col-sm-4">
-                            <h6 class="mb-3">From: #{{ node.customer.user_id }} </h6>
-                            <div>
-                                <strong>{{ node.customer.first_name }} {{ node.customer.last_name }}</strong>
-                            </div>
-                            <div>{{ node.customer.phone_number }} </div>
-                            <div>{{ node.customer.email }} </div>
-                            <div>{{ node.customer.address }} </div>
-                            <div>{{ node.customer.place }} {{ node.customer.area }} </div>
-                        </div>
-                       
-                        <div class="col-sm-4">
-                            <h6 class="mb-3">Details:</h6>
-                            <div>Orders
-                                {% for order in node.orders.all %}
-                                <strong>#{{ order }}, </strong>
-                                {% endfor %}
+                <div class="col-6 text-end">
+                    <button onClick="window.print()" id="id_print" class="printBtnPrintPage btn-outline-primary">
+                        <i class="fas fa-print"></i>  Print Invoice
+                    </button>
+                </div>
+            </div>
+           
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="ui-view" class="printWrap" data-select2-id="ui-view">
+            <div class="row">
+                <div class="printWrap">
+                    <div class="printHeader">
+                        <img src="/static/images/logo.png">
+                    </div>
+                    <div class="mb-4"></div>
+
+                    <div class="card">
+                        <div class="card-header">Invoice
+                            <strong>#{{node.order_id}}</strong>
+                            <div style="float:right">
                             </div>
                             
                         </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-5 ml-auto">
-                            <table class="table table-clear">
-                                <tbody>
-                                    <tr>
-                                        <td class="left">
-                                            <strong>Total</strong>
-                                        </td>
-                                        <td class="right">KWD {{ node.total_amnt_to_pay }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left">
-                                            <strong>Paid</strong>
-                                        </td>
-                                        <td class="right">
-                                            <strong>KWD {{ node.total_paid_amount }}</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="left">
-                                            <strong>Balance</strong>
-                                        </td>
-                                        <td class="right">
-                                            <strong>KWD     {{ node.balance_amount }} ({{node.get_payment_status_display }})</strong>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                          
+                        <div class="card-body">
+                            <div class="dateTime row">
+                                <span>Feb 12, 2020</span>
+                                <span>Branch name</span>
+                                <span>Branch address, Address</span>
+                                <span>18:52:04 PM</span>
+                            </div>
+                            <div class="mb-3"></div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h6 class="mb-3 fromCust">From: #{{ node.customer.user_id }} </h6>
+                                    <div>
+                                        <strong>{{ node.customer.first_name }} {{ node.customer.last_name }}</strong>
+                                    </div>
+                                    <div>{{ node.customer.phone_number }} </div>
+                                    <div>{{ node.customer.email }} </div>
+                                    <div>{{ node.customer.address }} </div>
+                                    <div>{{ node.customer.place }} {{ node.customer.area }} </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <h6 class="mb-3">Details:</h6>
+                                    <div>Orders
+                                        {% for order in node.orders.all %}
+                                        <strong>#{{ order }}, </strong>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="purchaseItems">
+                                        <hr>
+                                        <h6 class="printSubtitle">In-Store</h6>
+                                        <hr>
+                                        <div class="order">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span>28.00</span>
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <span>1 X Item name</span>
+                                                    <small>Color - Size</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="order">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span>28.00</span>
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <span>1 X Item name</span>
+                                                    <small>Color - Size</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+ 
+                                    <hr>
+
+                                    <div class="totalWrap">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span>Total</span>
+                                            </div>
+                                            <div class="col-6 text-right">
+                                                <span>
+                                                    <b>
+                                                        KWD {{ node.total_amnt_to_pay }}
+                                                    </b>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="totalWrap">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span>Paid</span>
+                                            </div>
+                                            <div class="col-6 text-right">
+                                                <span>
+                                                    <b>
+                                                        KWD {{ node.total_paid_amount }}
+                                                    </b>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="totalWrap">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span>Balance</span>
+                                            </div>
+                                            <div class="col-6 text-right">
+                                                <span>
+                                                  
+                                                        KWD {{ node.balance_amount }} <br>
+                                                        <b>({{node.get_payment_status_display }})</b>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4"></div>
+                                    <div class="credit text-center">
+                                        <hr>
+                                        Thank you for being unique!
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>				                            
+    </div>
 
-<style>
-.card {
-    margin-bottom: 1.5rem
-}
+    <style>
+        .card {
+            margin-bottom: 1.5rem
+        }
 
-.card {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid #c8ced3;
-    border-radius: .25rem
-}
+        .card {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid #c8ced3;
+            border-radius: .25rem
+        }
 
-.card-header:first-child {
-    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0
-}
+        .card-header:first-child {
+            border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0
+        }
 
-.card-header {
-    padding: .75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: #f0f3f5;
-    border-bottom: 1px solid #c8ced3
-}
-@media print{ #id_print{display:none;} } 
-#id_print
-</style>
-<script src="/static/js/all.js"></script>
+        .card-header {
+            padding: .75rem 1.25rem;
+            margin-bottom: 0;
+            background-color: #f0f3f5;
+            border-bottom: 1px solid #c8ced3
+        }
 
-<script>
- $(document).ready(function () {
-     $("#id_print").trigger('click');
- });
- </script>
+        @media print {
+            #id_print {
+                display: none;
+            }
+            .fakeHeader{
+                display: none;
+            }
+        }
+
+        #id_print
+    </style>
+    <script src="/static/js/all.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            /* $("#id_print").trigger('click'); */
+        });
+    </script>
+</body>
+
+</html>
