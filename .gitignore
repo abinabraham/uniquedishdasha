@@ -1,3 +1,14 @@
 node_modules
 package-lock.json
 app/orders/__pycache__/
+app/dashboard/__pycache__/
+app/api/__pycache__/
+app/accounts/templatetags/__pycache__/
+app/accounts/migrations/__pycache__/
+app/accounts/__pycache__/
+app/accounts/migrations/
+app/accounts/templatetags/
+app/api/__pycache__/
+app/dashboard/__pycache__/
+app/orders/__pycache__/
+ app/orders/migrations/
