@@ -76,7 +76,7 @@ class CustomUser(AbstractUser):
 
 
     def __str__(self):
-        return self.email
+        return self.phone_number
 
     class Meta:
         ordering = ["-id"]
@@ -87,4 +87,6 @@ class CustomUser(AbstractUser):
     
     def save(self, *args, **kwargs):
         self.user_id=str(id_generator())
-        super(CustomUser, self).save(*args, **kwargs)
+        self.username=str(id_generator())
+        if not self.__class__.objects.filter(phone_number=self.phone_number):
+            super(CustomUser, self).save(*args, **kwargs)
