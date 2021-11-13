@@ -27,6 +27,8 @@ class Branch(models.Model):
     help = "Branch Table"
     country = CountryField(default="KW")
     title = models.CharField("Branch Name", max_length=50,null=True, blank=True)
+    address = models.TextField("Address",null=True, blank=True)   
+
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

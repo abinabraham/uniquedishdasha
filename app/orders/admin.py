@@ -4,7 +4,6 @@ from simple_history.admin import SimpleHistoryAdmin
 
 admin.site.register(FabricType)
 admin.site.register(TailoringStyle)
-admin.site.register(OrderBook)
 admin.site.register(PricingPlans)
 admin.site.register(PricingPlansFabricTyp)
 admin.site.register(Measurements)

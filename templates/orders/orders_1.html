@@ -396,9 +396,11 @@
                     </div>
                     <div class="tab-pane fade" id="measurementSection" role="tabpanel" aria-labelledby="">
                         <input name="session_quantity" type="hidden" class="form-control" id="id_session_quantity">
-                        <button onClick="window.print()" class="btn btn-outline-primary"><i class="fas fa-print"></i> Print </button>
-                        
-                        
+                         <div class="editButtonGroup">
+                            <button type="button" class="btn btn-outline-primary" onClick="window.print()"> 
+                                <i class="fas fa-print"></i> Print
+                            </button> 
+                         </div>
                         <div class="actionPlate step3">
                             <div class="row">
                                 <div class="col-6">
@@ -782,12 +784,14 @@
 
                     // check if the input is valid using a 'valid' property
                     if (!$form.valid()) return false;
-
+                    var branch = $("#storeSelector").val();
+                    var formData = $("#id_form_primary_step2").serializeArray();
+                    formData.push({name: 'branch', value: branch});
                     $.ajax({
                             type: "POST",
                             enctype: 'multipart/form-data',
                             url: "/orders/ajax/orderbook/crud/",
-                            data: $("#id_form_primary_step2").serialize(),
+                            data: formData,
                             success: function (data) {
                                 console.log("SUCCESS : ", data);
                                 $(".btn_next_step2").trigger("click");
@@ -804,7 +808,7 @@
                                 <h3>
                                     Order `+i+` - Measurements
                                     <input name="session_measure_user" type="hidden" class="form-control" id="id_session_measure_user`+i+`" value="`+ data['data']['user']['user_id'] +`">
-                                    <input name="session_measure_order" type="hidden" class="form-control" id="id_session_measure_order`+i+`" value="`+ data['data']['data'][j]['id'] +`">
+                                    <input name="session_measure_order" type="hidden" class="form-control" id="id_session_measure_order`+i+`" value="`+ data['data']['data']['id'] +`">
                                     <input name="session_measure_complete_order" type="hidden" class="form-control" id="id_session_measure_complete_order`+i+`" value="`+ data['data']['complete_order_id'] +`">
 
                                 </h3>
@@ -815,7 +819,7 @@
                                         <span>Customer ID: <span  class="user_id_spn"><b>`+ data['data']['user']['user_id'] +`</b></span></span>
                                     </div>
                                     <div class="col-12">
-                                        <span>Order ID: <span  class="order_id_spn"><b>`+ data['data']['data'][j]['id'] +`</b></span></span>
+                                        <span>Order ID: <span  class="order_id_spn"><b>`+ data['data']['data']['id'] +`</b></span></span>
                                     </div>
                                     <div class="col-12">
                                         <span>Store Location: <span  class="branch_id_spn"><b>`+ data['data']['branch_title'] +`</b></span></span>
@@ -824,10 +828,10 @@
                                         <hr>
                                     </div>
                                     <div class="col-4">
-                                        <span>Deliver date: <span  class="order_dt_spn"><b>`+ data['data']['data'][j]['deliver_at'] +`</b></span></span>
+                                        <span>Deliver date: <span  class="order_dt_spn"><b>`+ data['data']['data']['deliver_at'] +`</b></span></span>
                                     </div>
                                     <div class="col-4 text-center">
-                                        <span>Q.of pieces: <br> <span  class="quantity_dt_spn"><b>`+ data['data']['data'][j]['quantity'] +`</b></span></span> <br>
+                                        <span>Q.of pieces: <br> <span  class="quantity_dt_spn"><b>`+ data['data']['data']['quantity'] +`</b></span></span> <br>
                                     </div>
                                     <div class="col-4 ">
                                         <span>Name: <span  class="customer_name_dt_spn"><b>`+ data['data']['user']['first_name'] +`</b></span></span> <br>
@@ -1097,25 +1101,25 @@
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Width Collar</label>
-                                                    <input type="text" class="form-control" name="width_collar">
+                                                    <input type="text" class="form-control" name="width_collar" value="`+ data['data']['latest_measure']['width_collar'] +`">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Size Collar</label>
-                                                    <input type="text" class="form-control"  name="size_collar">
+                                                    <input type="text" class="form-control"  name="size_collar" value="`+ data['data']['latest_measure']['size_collar'] +`">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Shoulder</label>
-                                                    <input type="text" class="form-control" name="shoulder">
+                                                    <input type="text" class="form-control" name="shoulder" value="`+ data['data']['latest_measure']['shoulder'] +`">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Front Chest</label>
-                                                    <input type="text" class="form-control" name="front_chest">
+                                                    <input type="text" class="form-control" name="front_chest" value="`+ data['data']['latest_measure']['front_chest'] +`">
                                                 </div>
                                             </div>
                                         </div>
@@ -1124,25 +1128,25 @@
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Bar</label>
-                                                    <input type="text" class="form-control" name="bar">
+                                                    <input type="text" class="form-control" name="bar" value="`+ data['data']['latest_measure']['bar'] +`">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Sleeve Length</label>
-                                                    <input type="text" class="form-control" name="sleeve_length">
+                                                    <input type="text" class="form-control" name="sleeve_length" value="`+ data['data']['latest_measure']['sleeve_length'] +`">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Front Pocket</label>
-                                                    <input type="text" class="form-control" name="front_pocket">
+                                                    <input type="text" class="form-control" name="front_pocket" value="`+ data['data']['latest_measure']['front_pocket'] +`">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Side Pocket</label>
-                                                    <input type="text" class="form-control"name="size_pocket">
+                                                    <input type="text" class="form-control"name="size_pocket" value="`+ data['data']['latest_measure']['size_pocket'] +`">
                                                 </div>
                                             </div>
                                         </div>
@@ -1151,25 +1155,25 @@
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Open Pocket</label>
-                                                    <input type="text" class="form-control" name="big_pocket">
+                                                    <input type="text" class="form-control" name="big_pocket" value="`+ data['data']['latest_measure']['big_pocket'] +`">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Fold Width</label>
-                                                    <input type="text" class="form-control" name="fold_width">
+                                                    <input type="text" class="form-control" name="fold_width" value="`+ data['data']['latest_measure']['fold_width'] +`">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Fold Length</label>
-                                                    <input type="text" class="form-control" name="fold_length">
+                                                    <input type="text" class="form-control" name="fold_length" value="`+ data['data']['latest_measure']['fold_length'] +`">
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Two Line</label>
-                                                    <input type="text" class="form-control" name="two_line">
+                                                    <input type="text" class="form-control" name="two_line" value="`+ data['data']['latest_measure']['two_line'] +`">
                                                 </div>
                                             </div>
                                         </div>
@@ -1179,7 +1183,7 @@
                                             <div class="col-3">
                                                 <div class="inputWrap">
                                                     <label for="" class="form-label">Length</label>
-                                                    <input type="text" class="form-control" name="length">
+                                                    <input type="text" class="form-control" name="length" value="`+ data['data']['latest_measure']['length'] +`">
                                                 </div>
                                             </div>
                                         </div>

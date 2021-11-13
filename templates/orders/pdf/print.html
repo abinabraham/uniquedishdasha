@@ -1,0 +1,132 @@
+
+<div class="container" id="printableId">
+    <div id="ui-view" class="printWrap" data-select2-id="ui-view">
+        <div class="row">
+            <div class="printWrap">
+                <div class="printHeader">
+                    <img src="/static/images/logo.png">
+                </div>
+                <div class="mb-4"></div>
+
+                <div class="card">
+                    <div class="card-header">Order
+                        <strong>#{{node.order_id}}</strong>
+                        <div style="float:right">
+                        </div>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="dateTime row">
+                            <span>{{ today }}</span>
+                            <span>{{ node.orders.all.0.branch.title }}</span>
+                            {% if node.orders.all.0.branch.address %}
+                                <span>{{ node.orders.all.0.branch.address }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3"></div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h6 class="mb-3 fromCust">Customer: {{ node.customer.user_id }} </h6>
+                                <div>
+                                    <strong>{{ node.customer.first_name }} {{ node.customer.last_name }}</strong>
+                                </div>
+                                <div>{{ node.customer.phone_number }} </div>
+                                <div>{{ node.customer.email }} </div>
+                                <div>{{ node.customer.address }} </div>
+                                <div>{{ node.customer.place }} {{ node.customer.area }} </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div>Measurements: 
+                                    {% for measurement in node.measurements.all %}
+                                    <strong> {{ measurement.measure_id }} {% if not forloop.last %},{% endif %} </strong>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="purchaseItems">
+                                    <hr>
+                                    <h6 class="printSubtitle">In-Store</h6>
+                                    <hr>
+                                    <div class="order">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span>28.00</span>
+                                            </div>
+                                            <div class="col-6 text-right">
+                                                <span>1 X Item name</span>
+                                                <small>Color - Size</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="order">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span>28.00</span>
+                                            </div>
+                                            <div class="col-6 text-right">
+                                                <span>1 X Item name</span>
+                                                <small>Color - Size</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="totalWrap">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>Total</span>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <span>
+                                                <b>
+                                                    KWD {{ node.total_amnt_to_pay }}
+                                                </b>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="totalWrap">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>Paid</span>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <span>
+                                                <b>
+                                                    KWD {{ node.total_paid_amount }}
+                                                </b>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="totalWrap">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>Balance</span>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <span>
+                                                
+                                                    KWD {{ node.balance_amount }} <br>
+                                                    <b>({{node.get_payment_status_display }})</b>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-4"></div>
+                                <div class="credit text-center">
+                                    <hr>
+                                    Thank you for being unique!
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

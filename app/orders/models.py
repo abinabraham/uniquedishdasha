@@ -51,36 +51,7 @@ class TailoringStyle(models.Model):
         verbose_name = "Tailoring Style"
 
 
-class OrderBook(models.Model):
-    help = "Tailoring Style"
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    order_id = models.CharField("Order ID",null=True, blank=True, max_length=100)
-    branch = models.ForeignKey(Branch, on_delete=models.CASCADE,related_name="order_branch"
-                                          , null=True, blank=True)
-    customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE,related_name="order_customer")
-    is_customer_own_fabric = models.BooleanField(default=True)
 
-    quantity = models.CharField("Quantity", max_length=50,null=True, blank=True)
-    deliver_at = models.DateTimeField()
-    is_active = models.BooleanField(default=True)
-
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return str(self.id)
-
-    class Meta:
-        ordering = ["-created_at"]
-        verbose_name_plural = "Order Book"
-        verbose_name = "Order Book"
-    
-
-    
-    def save(self, *args, **kwargs):
-        self.order_id=id_generator()
-        super(OrderBook, self).save(*args, **kwargs)
 
 class PricingPlans(models.Model):
     help = "Pricing Plans"
@@ -130,6 +101,14 @@ class Collars(models.TextChoices):
     COLLAR2 = 'C2', 'Collar2'
     COLLAR3 = 'C3', 'Collar3'
     COLLAR4 = 'C4', 'Collar4'
+    POCKET1 = 'P1', 'Pocket1'
+    POCKET2 = 'P2', 'Pocket2'
+    POCKET3 = 'P3', 'Pocket3'
+    POCKET4 = 'P4', 'Pocket4'
+    ZIP1 = 'Z1', 'Zip1'
+    ZIP2 = 'Z2', 'Zip2'
+    ZIP3 = 'Z3', 'Zip3'
+    ZIP4 = 'Z4', 'Zip4'
 
 
 class Zips(models.TextChoices):
@@ -199,8 +178,6 @@ class Measurements(models.Model):
     help = "Measurements"
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     measure_id = models.CharField("Measurement ID",null=True, blank=True, max_length=100)
-    order = models.ForeignKey(OrderBook, on_delete=models.CASCADE,related_name="order_measurement"
-                                          , null=True, blank=True)
     collar = models.CharField(
                         max_length=2,
                         choices=Collars.choices,
@@ -242,7 +219,6 @@ class Measurements(models.Model):
     sholderTwo = models.CharField("Shoulder Two", max_length=50,null=True, blank=True)
     mainWidth = models.CharField("Main Width", max_length=50,null=True, blank=True)
     penPocket_select = models.CharField("Pen Pocket", max_length=50,null=True, blank=True)
-    insidePocket = models.CharField("Inside Pocket", max_length=50,null=True, blank=True)
     insidePocket = models.CharField("Inside Pocket", max_length=50,null=True, blank=True)
     handSize = models.CharField("Hand Size", max_length=50,null=True, blank=True)
 
@@ -287,6 +263,8 @@ class Measurements(models.Model):
                                              , null=True, blank=True)
     color = models.CharField("Color", max_length=50,null=True, blank=True)
     total_meters = models.CharField("Total Meters", max_length=50,null=True, blank=True)
+    price = models.DecimalField("Price", max_digits=5, decimal_places=2, default=0)
+
     
 
     def __str__(self):
@@ -328,7 +306,14 @@ class Orders(models.Model):
     help = "Orders"
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order_id = models.CharField("Order ID",null=True, blank=True, max_length=100)
-    orders = models.ManyToManyField(OrderBook)
+
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE,related_name="order_branch"
+                                          , null=True, blank=True)
+    is_customer_own_fabric = models.BooleanField(default=True)
+
+    quantity = models.CharField("Quantity", max_length=50,null=True, blank=True)
+    deliver_at = models.DateTimeField()
+    delivered_date = models.DateTimeField(null=True, blank=True)
     measurements = models.ManyToManyField(Measurements)
     customer = models.ForeignKey(CustomUser, on_delete=models.CASCADE,related_name="main_order_customer")
     total_amnt_to_pay = models.DecimalField("Total Amount to Pay", max_digits=5, decimal_places=2,  default=0)

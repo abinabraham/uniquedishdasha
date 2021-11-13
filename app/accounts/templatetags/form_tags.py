@@ -6,6 +6,7 @@ from core.utils import FormFieldNode
 from app.orders.models import (FabricType, 
                             TailoringStyle)
 from app.dashboard.models import Colors
+from app.accounts.models import Branch
 
 register = template.Library()
 
@@ -38,3 +39,7 @@ def get_tailoringstyle():
 @register.simple_tag
 def get_colors():
     return Colors.objects.all()
+
+@register.simple_tag
+def get_branches():
+    return Branch.objects.all()

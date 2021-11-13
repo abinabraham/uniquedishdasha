@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="printableId">
         <div id="ui-view" class="printWrap" data-select2-id="ui-view">
             <div class="row">
                 <div class="printWrap">
@@ -40,7 +40,7 @@
                     <div class="mb-4"></div>
 
                     <div class="card">
-                        <div class="card-header">Invoice
+                        <div class="card-header">Order
                             <strong>#{{node.order_id}}</strong>
                             <div style="float:right">
                             </div>
@@ -48,16 +48,17 @@
                         </div>
                         <div class="card-body">
                             <div class="dateTime row">
-                                <span>Feb 12, 2020</span>
-                                <span>Branch name</span>
-                                <span>Branch address, Address</span>
-                                <span>18:52:04 PM</span>
+                                <span>{{ today }}</span>
+                                <span>{{ node.branch.title }}</span>
+                                {% if node.branch.address %}
+                                    <span>{{ node.branch.address }}</span>
+                                {% endif %}
                             </div>
                             <div class="mb-3"></div>
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h6 class="mb-3 fromCust">From: #{{ node.customer.user_id }} </h6>
+                                    <h6 class="mb-3 fromCust">Customer: {{ node.customer.user_id }} </h6>
                                     <div>
                                         <strong>{{ node.customer.first_name }} {{ node.customer.last_name }}</strong>
                                     </div>
@@ -68,39 +69,29 @@
                                 </div>
 
                                 <div class="col-sm-12">
-                                    <h6 class="mb-3">Details:</h6>
-                                    <div>Orders
-                                        {% for order in node.orders.all %}
-                                        <strong>#{{ order }}, </strong>
-                                        {% endfor %}
-                                    </div>
 
                                     <div class="purchaseItems">
                                         <hr>
                                         <h6 class="printSubtitle">In-Store</h6>
                                         <hr>
+                                        {% for measurement in node.measurements.all %}
                                         <div class="order">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <span>28.00</span>
+                                                    <span>{{ measurement.price }}</span>
                                                 </div>
                                                 <div class="col-6 text-right">
-                                                    <span>1 X Item name</span>
-                                                    <small>Color - Size</small>
+                                                    <span>1 X {{ measurement.measure_id }}</span>
+                                                    <span>Fabric Type - {{ measurement.fb_type.title }} </span>
+                                                    <span>Tailoring Style - {{ measurement.tailr_styl.title }} </span>
+                                                    <small>Color - {{ measurement.get_collar_display }}</small>
+                                                    <small>Length - {{ measurement.total_meters }} meters</small>
+
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="order">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <span>28.00</span>
-                                                </div>
-                                                <div class="col-6 text-right">
-                                                    <span>1 X Item name</span>
-                                                    <small>Color - Size</small>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
+                                        
                                     </div>
  
                                     <hr>
@@ -202,13 +193,16 @@
             }
         }
 
-        #id_print
+        
     </style>
     <script src="/static/js/all.js"></script>
 
-    <script>
+    <script>   
+        
         $(document).ready(function () {
-            /* $("#id_print").trigger('click'); */
+            $("#id_print").trigger('click'); 
+
+
         });
     </script>
 </body>
