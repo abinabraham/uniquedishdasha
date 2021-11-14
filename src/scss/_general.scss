@@ -59,6 +59,8 @@ img{
     margin-bottom: 20px;
     .backButton{
         padding-top: 19px;
+        width: 70px;
+        float: left;
         a{
             color: black;
             text-decoration: none;
@@ -66,6 +68,50 @@ img{
             font-size: 16px;
         }
     }
+    .fakeTitle{
+        width:  calc(100% - 70px);
+      float: left;
+        text-align: center;
+        margin-top: 20px;
+        h3{
+            font-size: 22px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
+    }
+}
+
+.gallery{
+    max-height: 750px;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: space-between;
+    a{
+        width: calc((100% - 30px)/2);
+        margin: 0;
+        padding: 0;
+    }
+    @media (max-width: 767px){
+        a{
+            width: 100%!important;
+
+        }
+    }
+    img{
+        height: 300px;
+        width :100%;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+}
+
+.lb-nav a.lb-prev{
+    opacity: 1!important;
+}
+.lb-nav a.lb-next{
+    opacity: 1!important;
 }
 
 .subtitleWrap{
