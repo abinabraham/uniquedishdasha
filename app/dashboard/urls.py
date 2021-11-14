@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 #Custom Imports
 from .views import ( IndexView,DummyView, origin_airport_search, \
                     ProfileView, ProfileViewGet, PendingOrdersView,\
-                    generatePdf, generatePrint)
+                    generatePdf, generatePrint, GalleryView)
 
 app_name = 'dashboard'
 
@@ -19,6 +19,8 @@ urlpatterns = [
     path('pending/orders/', login_required(PendingOrdersView.as_view()), name='pending_ordrs'),
     path('pdf/<str:cid>/<str:value>', generatePdf, name='invoice_pdf'),
     path('print/<str:cid>/', generatePrint, name='print_generate'),
+    path('gallery/', login_required(GalleryView.as_view()), name='gallery'),
+
 
 
 ]

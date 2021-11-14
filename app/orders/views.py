@@ -64,7 +64,9 @@ def order_ajaxsubmission(request):
             obj.branch = branch_obj
 
             obj.save()
-            customer_obj = UserAllSerializer(obj, context={'request': None}).data
+            ob =  CustomUser.objects.get(
+                                    username=data['username'])
+            customer_obj = UserAllSerializer(ob, context={'request': None}).data
             return JsonResponse({"success": "Succesfully Saved customer", 'data':customer_obj}, status=200)
         except Exception as error:
             return JsonResponse({"error": error}, status=400)

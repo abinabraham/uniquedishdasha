@@ -82,7 +82,7 @@ class CustomUser(AbstractUser):
             return self.username
 
     class Meta:
-        ordering = ["-id"]
+        ordering = ["-updated_at"]
         verbose_name_plural = "User"
         verbose_name = "Users"
     
@@ -93,9 +93,14 @@ class CustomUser(AbstractUser):
         last_name = self.first_name.split(' ')[0]
 
         self.user_id=str(id_generator())
-        self.username=str(id_generator())
+        if not self.username:
+            self.username=str(id_generator())
         self.role_name = 2
-        self.first_name = first_name
-        self.last_name = last_name
+        if not self.first_name:
+            self.first_name = first_name
+        if not self.last_name:
+            self.last_name = last_name
+        if not self.user_id:
+            self.user_id = self.user_id
         if not self.__class__.objects.filter(phone_number=self.phone_number):
             super(CustomUser, self).save(*args, **kwargs)
