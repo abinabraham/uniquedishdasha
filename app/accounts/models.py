@@ -76,7 +76,10 @@ class CustomUser(AbstractUser):
 
 
     def __str__(self):
-        return self.phone_number
+        if self.first_name and self.last_name and self.phone_number:
+            return self.first_name + " " + self.last_name + " (" + self.phone_number + ")"
+        else:
+            return self.username
 
     class Meta:
         ordering = ["-id"]
@@ -86,8 +89,13 @@ class CustomUser(AbstractUser):
 
     
     def save(self, *args, **kwargs):
+        first_name = self.first_name.split(' ')[0]
+        last_name = self.first_name.split(' ')[0]
+
         self.user_id=str(id_generator())
         self.username=str(id_generator())
-        self.first_name = self.first_name.encode('utf-8')
+        self.role_name = 2
+        self.first_name = first_name
+        self.last_name = last_name
         if not self.__class__.objects.filter(phone_number=self.phone_number):
             super(CustomUser, self).save(*args, **kwargs)
