@@ -184,3 +184,6 @@ def generatePrint(request,cid):
     node = get_object_or_404(Orders, id =cid)
     context = {'node':node, 'today':datetime.datetime.now()}
     return render(request, 'orders/pdf/invoice.html', context)
+
+class GalleryView(TemplateView):
+    template_name = "dashboard/gallery.html"

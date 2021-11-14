@@ -82,13 +82,33 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="dashGridItemWrap">
+                            <a href="{% url 'dashboard:gallery' %}">
+                                <div class="dashGridItem">
+                                    <img src="/static/images/icon_Gallery.svg" alt="">
+                                </div>
+                                <h4>Gallery</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="dashGridItemWrap">
                             <a href="{% url 'dashboard:pending_ordrs' %}">
+                                <div class="dashGridItem">
+                                    <img src="/static/images/icon_Gallery.svg" alt="">
+                                </div>
                                 <h4>PENDING ORDERS</h4>
                             </a>
                         </div>
                     </div>
+                    {% comment %} <div class="col-md-12">
+                        <div class="dashGridItemWrap">
+                            <a href="{% url 'dashboard:pending_ordrs' %}">
+                                <h4></h4>
+                            </a>
+                        </div>
+                    </div> {% endcomment %}
                     
                 </div>
             </div>
