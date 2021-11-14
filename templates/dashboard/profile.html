@@ -73,8 +73,16 @@
                             <div class="d-flex w-100 justify-content-between mb-2">
                                 <h6 class=""><i class="fas fa-calendar-alt"></i> <small>Delivery Date -</small> {{ exist_order.measurements.all.0.order.deliver_at }}</h6>
                                 <div class="badges-wrap">
-                                    <span class="badge bg-secondary">{{ exist_order.get_order_status_display }}</span>
-                                    <span class="badge bg-success">{{ exist_order.get_payment_status_display }}</span>
+                                    <span class="badge {% if exist_order.order_status == 'OS1' %}bg-danger{% endif %}
+                                                        {% if exist_order.order_status == 'OS2' %}bg-warning text-dark{% endif %}
+                                                        {% if exist_order.order_status == 'OS3' %}bg-success{% endif %}">
+                                                {{ exist_order.get_order_status_display }}
+                                    </span>
+                                    <span class="badge {% if exist_order.payment_status == 'PS1' %}bg-danger{% endif %}
+                                                        {% if exist_order.payment_status == 'PS2' %}bg-warning text-dark{% endif %}
+                                                        {% if exist_order.payment_status == 'PS3' %}bg-success{% endif %}
+                                                        {% if exist_order.payment_status == 'PS4' %}bg-dark{% endif %}">
+                                                        {{ exist_order.get_payment_status_display }}</span>
                                 </div>
                             </div>
                             
@@ -240,8 +248,16 @@
                             <div class="d-flex w-100 justify-content-between mb-2">
                                 <h6 class=""><i class="fas fa-calendar-alt"></i> <small>Delivery Date -</small> {{ exist_order.measurements.all.0.order.deliver_at }}</h6>
                                 <div class="badges-wrap">
-                                    <span class="badge bg-secondary">{{ exist_order.get_order_status_display }}</span>
-                                    <span class="badge bg-success">{{ exist_order.get_payment_status_display }}</span>
+                                    <span class="badge {% if exist_order.order_status == 'OS1' %}bg-danger{% endif %}
+                                                        {% if exist_order.order_status == 'OS2' %}bg-warning text-dark{% endif %}
+                                                        {% if exist_order.order_status == 'OS3' %}bg-success{% endif %}">
+                                                {{ exist_order.get_order_status_display }}
+                                    </span>
+                                    <span class="badge {% if exist_order.payment_status == 'PS1' %}bg-danger{% endif %}
+                                                        {% if exist_order.payment_status == 'PS2' %}bg-warning text-dark{% endif %}
+                                                        {% if exist_order.payment_status == 'PS3' %}bg-success{% endif %}
+                                                        {% if exist_order.payment_status == 'PS4' %}bg-dark{% endif %}">
+                                                        {{ exist_order.get_payment_status_display }}</span>
                                 </div>
                             </div>
                             
@@ -412,8 +428,16 @@
                             <div class="d-flex w-100 justify-content-between mb-2">
                                 <h6 class=""><i class="fas fa-calendar-alt"></i> <small>Delivery Date -</small> {{ exist_order.measurements.all.0.order.deliver_at }}</h6>
                                 <div class="badges-wrap">
-                                    <span class="badge bg-secondary">{{ exist_order.get_order_status_display }}</span>
-                                    <span class="badge bg-success">{{ exist_order.get_payment_status_display }}</span>
+                                    <span class="badge {% if exist_order.order_status == 'OS1' %}bg-danger{% endif %}
+                                                        {% if exist_order.order_status == 'OS2' %}bg-warning text-dark{% endif %}
+                                                        {% if exist_order.order_status == 'OS3' %}bg-success{% endif %}">
+                                                {{ exist_order.get_order_status_display }}
+                                    </span>
+                                    <span class="badge {% if exist_order.payment_status == 'PS1' %}bg-danger{% endif %}
+                                                        {% if exist_order.payment_status == 'PS2' %}bg-warning text-dark{% endif %}
+                                                        {% if exist_order.payment_status == 'PS3' %}bg-success{% endif %}
+                                                        {% if exist_order.payment_status == 'PS4' %}bg-dark{% endif %}">
+                                                        {{ exist_order.get_payment_status_display }}</span>
                                 </div>
                             </div>
                             
