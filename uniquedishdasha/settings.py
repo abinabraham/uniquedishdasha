@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'uniquedishdasha.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if DEBUG:
+if not DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -104,7 +104,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'uniquedd',
-            'USER': 'uniquedduser',
+            'USER': 'root1',
             'PASSWORD': 'root123#',
             'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
             'PORT': '3306',

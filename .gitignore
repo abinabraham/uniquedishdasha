@@ -1,3 +1,6 @@
+*.pyc
+app/accounts/__pycache__
+app/accounts/__pycache__/
 node_modules
 package-lock.json
 app/orders/__pycache__/
@@ -11,4 +14,8 @@ app/accounts/templatetags/
 app/api/__pycache__/
 app/dashboard/__pycache__/
 app/orders/__pycache__/
- app/orders/migrations/
+app/orders/migrations/
+
+**/**/__pycache__
+app/accounts/__pycache__
+app/orders/migrations
