@@ -173,6 +173,10 @@ class FinalStyle(models.TextChoices):
     FINALSTYLE1 = 'FS1', 'FinalStyle1'
     FINALSTYLE2 = 'FS2', 'FinalStyle2'
 
+class Line(models.TextChoices):
+    LINE1 = 'OneLine', 'OneLine'
+    LINE2 = 'TwoLine', 'TwoLine'
+
 
 class Measurements(models.Model):
     help = "Measurements"
@@ -255,7 +259,9 @@ class Measurements(models.Model):
     fold_width = models.CharField("Fold Width", max_length=50,null=True, blank=True) 
     fold_length =  models.CharField("Fold Length", max_length=50,null=True, blank=True) 
     two_line = models.CharField("Two Line", max_length=50,null=True, blank=True) 
-    length = models.CharField("Length", max_length=50,null=True, blank=True) 
+    length = models.CharField("Front Length", max_length=50,null=True, blank=True) 
+    back_length = models.CharField("Back Length", max_length=50,null=True, blank=True) 
+
 
     fb_type = models.ForeignKey(FabricType, on_delete=models.CASCADE,related_name="fbrc_typ"
                                              , null=True, blank=True)
@@ -264,8 +270,13 @@ class Measurements(models.Model):
     color = models.CharField("Color", max_length=50,null=True, blank=True)
     total_meters = models.CharField("Total Meters", max_length=50,null=True, blank=True)
     price = models.DecimalField("Price", max_digits=5, decimal_places=2, default=0)
-
     
+    line = models.CharField(
+                        max_length=10,
+                        choices=Line.choices,
+                        default=Line.LINE1,
+                        null=True, blank=True,
+                    )
 
     def __str__(self):
         return str(self.id)

@@ -1238,13 +1238,10 @@
                                             </div>
                                             <div class="col-3">
                                                 <div class="inputWrap">
-                                                    <label for="" class="form-label">Two Line</label>
+                                                    <label for="" class="form-label">Line</label>
                                                     <select name="two_line" class="form-select">
-                                                            <option value="1.00">1.00</option>
-                                                            <option value="1.2">1.25</option>
-                                                            <option value="1.50">1.50</option>
-                                                            <option value="1.75">1.75</option>
-                                                            <option value="2.00">2.00</option>
+                                                            <option value="One Line">One Line</option>
+                                                            <option value="Two Line">Two Line</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -1254,8 +1251,20 @@
                                         <div class="row">
                                             <div class="col-3">
                                                 <div class="inputWrap">
-                                                    <label for="" class="form-label">Length</label>
+                                                    <label for="" class="form-label">Front Length</label>
                                                     <select name="length" class="form-select">
+                                                            <option value="1.00">1.00</option>
+                                                            <option value="1.2">1.25</option>
+                                                            <option value="1.50">1.50</option>
+                                                            <option value="1.75">1.75</option>
+                                                            <option value="2.00">2.00</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="inputWrap">
+                                                    <label for="" class="form-label">Back Length</label>
+                                                    <select name="back_length" class="form-select">
                                                             <option value="1.00">1.00</option>
                                                             <option value="1.2">1.25</option>
                                                             <option value="1.50">1.50</option>
@@ -1305,18 +1314,12 @@
                                 fabricTypes: "required",
                                 tayloringType: "required",
                                 meters:"required",
-                                color: {
-                                    required: true
-                                },
                                 },
                                 // Specify validation error messages
                                 messages: {
                                     fabricTypes: "Please enter amount to Pay",
                                     tayloringType: "Please enter amount to Pay",
                                     meters: "Please enter amount to Pay",
-                                    color: {
-                                        required: "Please provide color"
-                                    },
 
                                 
                                 },
